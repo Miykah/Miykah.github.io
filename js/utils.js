@@ -1,459 +1,535 @@
-/* global KEEP */
+/* global function */
 
-KEEP.initUtils = () => {
-  KEEP.utils = {
-    html_root_dom: document.querySelector('html'),
-    pageContainer_dom: document.querySelector('.page-container'),
-    pageTop_dom: document.querySelector('.page-main-content-top'),
-    firstScreen_dom: document.querySelector('.first-screen-container'),
-    scrollProgressBar_dom: document.querySelector('.scroll-progress-bar'),
-    pjaxProgressBar_dom: document.querySelector('.pjax-progress-bar'),
-    pjaxProgressIcon_dom: document.querySelector('.pjax-progress-icon'),
-    back2TopButton_dom: document.querySelector('.tool-scroll-to-top'),
-    headerWrapper_dom: document.querySelector('.header-wrapper'),
+Global.initUtils = () => {
+  Global.utils = {
+    html_root_dom: document.querySelector("html"),
+    pageContainer_dom: document.querySelector(".page-container"),
+    pageTop_dom: document.querySelector(".main-content-header"),
+    homeBanner_dom: document.querySelector(".home-banner-container"),
+    scrollProgressBar_dom: document.querySelector(".scroll-progress-bar"),
+    pjaxProgressBar_dom: document.querySelector(".pjax-progress-bar"),
+    pjaxProgressIcon_dom: document.querySelector(".pjax-progress-icon"),
+    backToTopButton_dom: document.querySelector(".tool-scroll-to-top"),
+    toolsList: document.querySelector(".hidden-tools-list"),
+    toggleButton: document.querySelector(".toggle-tools-list"),
 
     innerHeight: window.innerHeight,
     pjaxProgressBarTimer: null,
     prevScrollValue: 0,
     fontSizeLevel: 0,
-    isHasScrollProgressBar: false,
-    isHasScrollPercent: false,
-    isHeaderTransparent: false,
-    hasToc: false,
 
-    initData() {
-      const { scroll, first_screen } = KEEP.theme_config.style
-      this.isHasScrollProgressBar = scroll.progress_bar === true
-      this.isHasScrollPercent = scroll.percent === true
-      const { enable, header_transparent } = first_screen
-      this.isHeaderTransparent = enable === true && header_transparent === true
-    },
+    isHasScrollProgressBar:
+      Global.theme_config.global.scroll_progress.bar === true,
+    isHasScrollPercent:
+      Global.theme_config.global.scroll_progress.percentage === true,
 
-    // Scroll Style Handle
-    styleHandleWhenScroll() {
-      const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
-      const scrollHeight = document.body.scrollHeight || document.documentElement.scrollHeight
-      const clientHeight = window.innerHeight || document.documentElement.clientHeight
-
-      const percent = Math.round((scrollTop / (scrollHeight - clientHeight)) * 100)
-
+    // Scroll Style
+    updateScrollStyle() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = window.innerHeight || document.documentElement.clientHeight;
+      const percent = Math.round((scrollTop / (scrollHeight - clientHeight)) * 100);
+    
       if (this.isHasScrollProgressBar) {
-        const ProgressPercent = ((scrollTop / (scrollHeight - clientHeight)) * 100).toFixed(3)
-        this.scrollProgressBar_dom.style.visibility = percent === 0 ? 'hidden' : 'visible'
-        this.scrollProgressBar_dom.style.width = `${ProgressPercent}%`
+        const progressPercent = ((scrollTop / (scrollHeight - clientHeight)) * 100).toFixed(3);
+        this.scrollProgressBar_dom.style.visibility = percent === 0 ? 'hidden' : 'visible';
+        this.scrollProgressBar_dom.style.width = `${progressPercent}%`;
       }
-
+    
       if (this.isHasScrollPercent) {
-        const percent_dom = this.back2TopButton_dom.querySelector('.percent')
-        if (percent === 0 || percent === undefined) {
-          this.back2TopButton_dom.classList.remove('show')
-        } else {
-          this.back2TopButton_dom.classList.add('show')
-          percent_dom.innerHTML = percent.toFixed(0)
-        }
+        const percentDom = this.backToTopButton_dom.querySelector('.percent');
+        this.backToTopButton_dom.classList.toggle('show', percent !== 0 && percent !== undefined);
+        percentDom.innerHTML = percent.toFixed(0);
       }
-
-      // hide header handle
-      if (scrollTop > this.prevScrollValue && scrollTop > this.innerHeight) {
-        this.pageTop_dom.classList.add('hide')
-        if (this.isHeaderTransparent) {
-          this.headerWrapper_dom.classList.remove('transparent-1', 'transparent-2')
-        }
+    
+      if (Global.theme_config.navbar.auto_hide) {
+        this.pageTop_dom.classList.toggle('hide', (this.prevScrollValue > clientHeight && scrollTop  > this.prevScrollValue) );
       } else {
-        this.pageTop_dom.classList.remove('hide')
-        if (this.isHeaderTransparent) {
-          if (scrollTop <= this.headerWrapper_dom.getBoundingClientRect().height) {
-            this.headerWrapper_dom.classList.remove('transparent-2')
-            this.headerWrapper_dom.classList.add('transparent-1')
-          } else if (scrollTop < this.innerHeight) {
-            this.headerWrapper_dom.classList.add('transparent-2')
-          }
-        }
+        this.pageTop_dom.classList.remove('hide');
       }
-      this.prevScrollValue = scrollTop
+      this.prevScrollValue = scrollTop;
     },
 
     // register window scroll event
     registerWindowScroll() {
-      window.addEventListener('scroll', () => {
+      window.addEventListener("scroll", () => {
         // style handle when scroll
-        this.styleHandleWhenScroll()
+        this.updateScrollStyle();
 
         // TOC scroll handle
-        if (KEEP.theme_config.toc.enable && KEEP.utils.hasOwnProperty('findActiveIndexByTOC')) {
-          KEEP.utils.findActiveIndexByTOC()
+        if (
+          Global.theme_config.articles.toc.enable &&
+          Global.utils.hasOwnProperty("updateActiveTOCLink")
+        ) {
+          Global.utils.updateActiveTOCLink();
         }
 
-        // header shrink
-        KEEP.utils.headerShrink.headerShrink()
-      })
+        // navbar shrink
+        navbarShrink.init();
+
+        // scroll blur
+        if (Global.theme_config.home_banner.style === "fixed" && location.pathname === Global.hexo_config.root) {
+          const blurElement = document.querySelector(".home-banner-background");
+          const viewHeight = window.innerHeight;
+          const scrollY = window.scrollY || window.pageYOffset;
+          const triggerViewHeight = viewHeight / 2;
+          const blurValue =
+            scrollY >= triggerViewHeight
+              ? 15
+              : 0;
+          try {
+            blurElement.style.transition = "0.3s";
+            blurElement.style.webkitFilter = `blur(${blurValue}px)`;
+          } catch (e) {}
+        }
+
+        // auto hide tools
+        var y = window.pageYOffset;
+        var height = document.body.scrollHeight;
+        var windowHeight = window.innerHeight;
+        var toolList = document.getElementsByClassName('right-side-tools-container');
+        
+        for (var i = 0; i < toolList.length; i++) {
+          var tools = toolList[i];
+          if (y <= 0) {
+            if (location.pathname !== '/') {
+              //console.log(location.pathname)
+            } else {
+              tools.classList.add('hide');
+            }
+          } else if (y + windowHeight >= height - 20) {
+            tools.classList.add('hide');
+          } else {
+            tools.classList.remove('hide');
+          }
+        }
+
+        /*aplayer auto hide*/
+        
+        var aplayer = document.getElementById('aplayer');
+        if (aplayer == null) {} else {
+          if (y <= 0) {
+              if (location.pathname !== '/') {
+                //console.log(location.pathname)
+              } else {
+                aplayer.classList.add('hide');
+              }
+          } else if (y + windowHeight >= height - 20) {
+            aplayer.classList.add('hide');
+          } else {
+            aplayer.classList.remove('hide');
+          }
+        }
+      });
     },
 
-    // toggle show tools list
-    toggleShowToolsList() {
-      const sideToolsListDom = document.querySelector('.side-tools-list')
-      const toggleShowToolsDom = document.querySelector('.tool-toggle-show')
-      toggleShowToolsDom.addEventListener('click', (e) => {
-        sideToolsListDom.classList.toggle('show')
-        e.stopPropagation()
-      })
-      sideToolsListDom.querySelectorAll('.tools-item').forEach((item) => {
-        item.addEventListener('click', (e) => {
-          e.stopPropagation()
-        })
-      })
-      document.addEventListener('click', () => {
-        sideToolsListDom.classList.contains('show') && sideToolsListDom.classList.remove('show')
-      })
+    toggleToolsList() {
+      this.toggleButton.addEventListener("click", () => {
+        this.toolsList.classList.toggle("show");
+      });
+    },
+    
+    globalFontSizeAdjust() {
+      const htmlRoot = this.html_root_dom;
+      const fontAdjustPlus = document.querySelector('.tool-font-adjust-plus');
+      const fontAdjustMinus = document.querySelector('.tool-font-adjust-minus');
+    
+      const fontSize = document.defaultView.getComputedStyle(document.body).fontSize;
+      const fs = parseFloat(fontSize);
+    
+      let fontSizeLevel = 0;
+      const styleStatus = Global.getStyleStatus();
+      if (styleStatus) {
+        fontSizeLevel = styleStatus.fontSizeLevel;
+        setFontSize(fontSizeLevel);
+      }
+    
+      function setFontSize(fontSizeLevel) {
+        htmlRoot.style.fontSize = `${fs * (1 + fontSizeLevel * 0.05)}px`;
+        Global.styleStatus.fontSizeLevel = fontSizeLevel;
+        Global.setStyleStatus();
+      }
+    
+      fontAdjustPlus.addEventListener('click', () => {
+        switch (fontSizeLevel) {
+          case 0:
+            fontSizeLevel = 1;
+            break;
+          case 1:
+            fontSizeLevel = 2;
+            break;
+          case 2:
+            fontSizeLevel = 3;
+            break;
+          case 3:
+            fontSizeLevel = 4;
+            break;
+          case 4:
+            fontSizeLevel = 5;
+            break;
+          default:
+            break;
+        }
+        setFontSize(fontSizeLevel);
+      });
+    
+      fontAdjustMinus.addEventListener('click', () => {
+        switch (fontSizeLevel) {
+          case 1:
+            fontSizeLevel = 0;
+            break;
+          case 2:
+            fontSizeLevel = 1;
+            break;
+          case 3:
+            fontSizeLevel = 2;
+            break;
+          case 4:
+            fontSizeLevel = 3;
+            break;
+          case 5:
+            fontSizeLevel = 4;
+            break;
+          default:
+            break;
+        }
+        setFontSize(fontSizeLevel);
+      });
     },
 
-    // global font adjust
-    globalFontAdjust() {
-      const fontSize = document.defaultView.getComputedStyle(document.body).fontSize
-      const fs = parseFloat(fontSize)
+    // toggle content area width
+    contentAreaWidthAdjust() {
+      const toolExpandDom = document.querySelector(".tool-expand-width");
+      const navbarContentDom = document.querySelector(".navbar-content");
+      const mainContentDom = document.querySelector(".main-content");
+      const iconDom = toolExpandDom.querySelector("i");
 
-      const initFontSize = () => {
-        const styleStatus = KEEP.getStyleStatus()
+      const defaultMaxWidth =
+        Global.theme_config.global.content_max_width || "1000px";
+      const expandMaxWidth = "90%";
+      let navbarMaxWidth = defaultMaxWidth;
+
+      let isExpand = false;
+
+      if (
+        Global.theme_config.home_banner.enable === true &&
+        window.location.pathname === "/"
+      ) {
+        navbarMaxWidth = parseInt(defaultMaxWidth) * 1.2 + "px";
+      }
+
+      const setPageWidth = (isExpand) => {
+        Global.styleStatus.isExpandPageWidth = isExpand;
+        Global.setStyleStatus();
+        if (isExpand) {
+          iconDom.classList.remove("fa-expand");
+          iconDom.classList.add("fa-compress");
+          navbarContentDom.style.maxWidth = expandMaxWidth;
+          mainContentDom.style.maxWidth = expandMaxWidth;
+        } else {
+          iconDom.classList.remove("fa-compress");
+          iconDom.classList.add("fa-expand");
+          navbarContentDom.style.maxWidth = navbarMaxWidth;
+          mainContentDom.style.maxWidth = defaultMaxWidth;
+        }
+      };
+
+      const initPageWidth = () => {
+        const styleStatus = Global.getStyleStatus();
         if (styleStatus) {
-          this.fontSizeLevel = styleStatus.fontSizeLevel
-          setFontSize(this.fontSizeLevel)
+          isExpand = styleStatus.isExpandPageWidth;
+          setPageWidth(isExpand);
         }
+      };
+
+      initPageWidth();
+
+      toolExpandDom.addEventListener("click", () => {
+        isExpand = !isExpand;
+        setPageWidth(isExpand);
+      });
+    },
+
+    // go comment anchor
+    goComment() {
+      this.goComment_dom = document.querySelector(".go-comment");
+      if (this.goComment_dom) {
+        this.goComment_dom.addEventListener("click", () => {
+          const target = document.querySelector("#comment-anchor");
+          const offset = target.getBoundingClientRect().top + window.scrollY;
+          window.anime({
+            targets: document.scrollingElement,
+            duration: 500,
+            easing: 'linear',
+            scrollTop: offset - 10
+          });
+        });
       }
-
-      const setFontSize = (fontSizeLevel) => {
-        this.html_root_dom.style.fontSize = `${fs * (1 + fontSizeLevel * 0.05)}px`
-        KEEP.styleStatus.fontSizeLevel = fontSizeLevel
-        KEEP.setStyleStatus()
-      }
-
-      initFontSize()
-
-      document.querySelector('.tool-font-adjust-plus').addEventListener('click', () => {
-        if (this.fontSizeLevel === 5) return
-        this.fontSizeLevel++
-        setFontSize(this.fontSizeLevel)
-      })
-
-      document.querySelector('.tool-font-adjust-minus').addEventListener('click', () => {
-        if (this.fontSizeLevel <= 0) return
-        this.fontSizeLevel--
-        setFontSize(this.fontSizeLevel)
-      })
     },
 
     // get dom element height
     getElementHeight(selectors) {
-      const dom = document.querySelector(selectors)
-      return dom ? dom.getBoundingClientRect().height : 0
+      const dom = document.querySelector(selectors);
+      return dom ? dom.getBoundingClientRect().height : 0;
     },
 
-    // init has TOC
-    initHasToc() {
-      const tocNavDoms = document.querySelectorAll('.post-toc-wrap .post-toc li')
-      if (tocNavDoms.length > 0) {
-        this.hasToc = true
-        document.body.classList.add('has-toc')
-      } else {
-        this.hasToc = false
-        document.body.classList.remove('has-toc')
-      }
+    // init first screen height
+    inithomeBannerHeight() {
+      this.homeBanner_dom &&
+        (this.homeBanner_dom.style.height = this.innerHeight + "px");
     },
 
     // init page height handle
     initPageHeightHandle() {
-      if (this.firstScreen_dom) return
-      const temp_h1 = this.getElementHeight('.page-main-content-top')
-      const temp_h2 = this.getElementHeight('.page-main-content-middle')
-      const temp_h3 = this.getElementHeight('.page-main-content-bottom')
-      const allDomHeight = temp_h1 + temp_h2 + temp_h3
-      const innerHeight = window.innerHeight
-      const pb_dom = document.querySelector('.page-main-content-bottom')
+      if (this.homeBanner_dom) return;
+      const temp_h1 = this.getElementHeight(".main-content-header");
+      const temp_h2 = this.getElementHeight(".main-content-body");
+      const temp_h3 = this.getElementHeight(".main-content-footer");
+      const allDomHeight = temp_h1 + temp_h2 + temp_h3;
+      const innerHeight = window.innerHeight;
+      const pb_dom = document.querySelector(".main-content-footer");
       if (allDomHeight < innerHeight) {
-        const marginTopValue = Math.floor(innerHeight - allDomHeight)
+        const marginTopValue = Math.floor(innerHeight - allDomHeight);
         if (marginTopValue > 0) {
-          pb_dom.style.marginTop = `${marginTopValue - 2}px`
+          pb_dom.style.marginTop = `${marginTopValue - 2}px`;
         }
       }
     },
 
-    // zoom in image
-    zoomInImage() {
-      let SIDE_GAP = 40
-      let isZoomIn = false
-      let curWinScrollY = 0
-      let selectedImgDom = null
-      const imgDomList = document.querySelectorAll('.keep-markdown-body img')
-      const zoomInImgMask = document.querySelector('.zoom-in-image-mask')
-      const zoomInImg = zoomInImgMask.querySelector('.zoom-in-image')
+    // big image viewer
+    imageViewer() {
+      let isBigImage = false;
 
-      const zoomOut = () => {
-        if (isZoomIn) {
-          isZoomIn = false
-          curWinScrollY = 0
-          zoomInImg && (zoomInImg.style.transform = `scale(1)`)
-          zoomInImgMask && zoomInImgMask.classList.remove('show')
-          setTimeout(() => {
-            selectedImgDom && selectedImgDom.classList.remove('hide')
-          }, 300)
-        }
-      }
-
-      const zoomOutHandle = () => {
-        zoomInImgMask &&
-          zoomInImgMask.addEventListener('click', () => {
-            zoomOut()
-          })
-
-        document.addEventListener('scroll', () => {
-          if (isZoomIn && Math.abs(curWinScrollY - window.scrollY) >= 50) {
-            zoomOut()
-          }
-        })
-      }
-
-      const setSideGap = () => {
-        const w = document.body.offsetWidth
-        if (w <= 500) {
-          SIDE_GAP = 10
-        } else if (w <= 800) {
-          SIDE_GAP = 20
+      const showHandle = (maskDom, isShow) => {
+        document.body.style.overflow = isShow ? "hidden" : "auto";
+        if (isShow) {
+          maskDom.classList.add("active");
         } else {
-          SIDE_GAP = 40
+          maskDom.classList.remove("active");
         }
-      }
+      };
 
-      if (imgDomList.length) {
-        zoomOutHandle()
-        imgDomList.forEach((img) => {
-          img.addEventListener('click', () => {
-            curWinScrollY = window.scrollY
-            isZoomIn = !isZoomIn
-            setSideGap()
-            zoomInImg.setAttribute('src', img.getAttribute('src'))
-            selectedImgDom = img
-            if (isZoomIn) {
-              const imgRect = selectedImgDom.getBoundingClientRect()
-              const imgW = imgRect.width
-              const imgH = imgRect.height
-              const imgL = imgRect.left
-              const imgT = imgRect.top
-              const winW = document.body.offsetWidth - SIDE_GAP * 2
-              const winH = document.body.offsetHeight - SIDE_GAP * 2
-              const scaleX = winW / imgW
-              const scaleY = winH / imgH
-              const scale = (scaleX < scaleY ? scaleX : scaleY) || 1
-              const translateX = winW / 2 - (imgRect.x + imgW / 2) + SIDE_GAP
-              const translateY = winH / 2 - (imgRect.y + imgH / 2) + SIDE_GAP
+      const imageViewerDom = document.querySelector(".image-viewer-container");
+      const targetImg = document.querySelector(".image-viewer-container img");
+      imageViewerDom &&
+        imageViewerDom.addEventListener("click", () => {
+          isBigImage = false;
+          showHandle(imageViewerDom, isBigImage);
+        });
 
-              selectedImgDom.classList.add('hide')
-              zoomInImgMask.classList.add('show')
-              zoomInImg.style.top = imgT + 'px'
-              zoomInImg.style.left = imgL + 'px'
-              zoomInImg.style.width = imgW + 'px'
-              zoomInImg.style.height = imgH + 'px'
-              zoomInImg.style.transform = `translateX(${translateX}px) translateY(${translateY}px) scale(${scale}) `
-            }
-          })
-        })
+      const imgDoms = document.querySelectorAll(".markdown-body img");
+
+      if (imgDoms.length) {
+        imgDoms.forEach((img) => {
+          img.addEventListener("click", () => {
+            isBigImage = true;
+            showHandle(imageViewerDom, isBigImage);
+            targetImg.setAttribute("src", img.getAttribute("src"));
+          });
+        });
+      } else {
+        this.pageContainer_dom.removeChild(imageViewerDom);
       }
     },
 
     // set how long ago language
     setHowLongAgoLanguage(p1, p2) {
-      return p2.replace(/%s/g, p1)
+      return p2.replace(/%s/g, p1);
     },
+    
 
     getHowLongAgo(timestamp) {
-      const lang = KEEP.language_ago
-      const __Y = Math.floor(timestamp / (60 * 60 * 24 * 30) / 12)
-      const __M = Math.floor(timestamp / (60 * 60 * 24 * 30))
-      const __W = Math.floor(timestamp / (60 * 60 * 24) / 7)
-      const __d = Math.floor(timestamp / (60 * 60 * 24))
-      const __h = Math.floor((timestamp / (60 * 60)) % 24)
-      const __m = Math.floor((timestamp / 60) % 60)
-      const __s = Math.floor(timestamp % 60)
+      const l = Global.language_ago;
+
+      const __Y = Math.floor(timestamp / (60 * 60 * 24 * 30) / 12);
+      const __M = Math.floor(timestamp / (60 * 60 * 24 * 30));
+      const __W = Math.floor(timestamp / (60 * 60 * 24) / 7);
+      const __d = Math.floor(timestamp / (60 * 60 * 24));
+      const __h = Math.floor((timestamp / (60 * 60)) % 24);
+      const __m = Math.floor((timestamp / 60) % 60);
+      const __s = Math.floor(timestamp % 60);
 
       if (__Y > 0) {
-        return this.setHowLongAgoLanguage(__Y, lang.year)
+        return this.setHowLongAgoLanguage(__Y, l.year);
       } else if (__M > 0) {
-        return this.setHowLongAgoLanguage(__M, lang.month)
+        return this.setHowLongAgoLanguage(__M, l.month);
       } else if (__W > 0) {
-        return this.setHowLongAgoLanguage(__W, lang.week)
+        return this.setHowLongAgoLanguage(__W, l.week);
       } else if (__d > 0) {
-        return this.setHowLongAgoLanguage(__d, lang.day)
+        return this.setHowLongAgoLanguage(__d, l.day);
       } else if (__h > 0) {
-        return this.setHowLongAgoLanguage(__h, lang.hour)
+        return this.setHowLongAgoLanguage(__h, l.hour);
       } else if (__m > 0) {
-        return this.setHowLongAgoLanguage(__m, lang.minute)
+        return this.setHowLongAgoLanguage(__m, l.minute);
       } else if (__s > 0) {
-        return this.setHowLongAgoLanguage(__s, lang.second)
+        return this.setHowLongAgoLanguage(__s, l.second);
       }
     },
 
-    setHowLongAgoInHome() {
-      const post = document.querySelectorAll('.home-article-meta-info .home-article-date')
-      post &&
+    relativeTimeInHome() {
+      const post = document.querySelectorAll(
+        ".home-article-meta-info .home-article-date"
+      );
+      const df = Global.theme_config.home.article_date_format;
+      if (df === "relative") {
+        post &&
+          post.forEach((v) => {
+            const nowDate = Date.now();
+            const postDate = new Date(v.dataset.date.split(" GMT")[0]).getTime();
+            v.innerHTML = this.getHowLongAgo(
+              Math.floor((nowDate - postDate) / 1000)
+            );
+          });
+      } else if (df === "auto") {
+        post &&
         post.forEach((v) => {
-          const nowDate = Date.now()
-          const postDate = new Date(v.dataset.updated.split(' GMT')[0]).getTime()
-          v.innerHTML = this.getHowLongAgo(Math.floor((nowDate - postDate) / 1000))
-        })
+          const nowDate = Date.now();
+          const postDate = new Date(v.dataset.date.split(" GMT")[0]).getTime();
+          const finalDays = Math.floor(
+            (nowDate - postDate) / (60 * 60 * 24 * 1000)
+          );
+          if (finalDays < 7) {
+            v.innerHTML = this.getHowLongAgo(
+              Math.floor((nowDate - postDate) / 1000)
+            );
+          }
+        });
+      }
     },
 
     // loading progress bar start
     pjaxProgressBarStart() {
-      this.pjaxProgressBarTimer && clearInterval(this.pjaxProgressBarTimer)
+      this.pjaxProgressBarTimer && clearInterval(this.pjaxProgressBarTimer);
       if (this.isHasScrollProgressBar) {
-        this.scrollProgressBar_dom.classList.add('hide')
+        this.scrollProgressBar_dom.classList.add("hide");
       }
 
-      this.pjaxProgressBar_dom.style.width = '0'
-      this.pjaxProgressIcon_dom.classList.add('show')
+      this.pjaxProgressBar_dom.style.width = "0";
+      this.pjaxProgressIcon_dom.classList.add("show");
 
-      let width = 1
-      const maxWidth = 99
+      let width = 1;
+      const maxWidth = 99;
 
-      this.pjaxProgressBar_dom.classList.add('show')
-      this.pjaxProgressBar_dom.style.width = width + '%'
+      this.pjaxProgressBar_dom.classList.add("show");
+      this.pjaxProgressBar_dom.style.width = width + "%";
 
       this.pjaxProgressBarTimer = setInterval(() => {
-        width += 5
-        if (width > maxWidth) width = maxWidth
-        this.pjaxProgressBar_dom.style.width = width + '%'
-      }, 100)
+        width += 5;
+        if (width > maxWidth) width = maxWidth;
+        this.pjaxProgressBar_dom.style.width = width + "%";
+      }, 100);
     },
 
     // loading progress bar end
     pjaxProgressBarEnd() {
-      this.pjaxProgressBarTimer && clearInterval(this.pjaxProgressBarTimer)
-      this.pjaxProgressBar_dom.style.width = '100%'
+      this.pjaxProgressBarTimer && clearInterval(this.pjaxProgressBarTimer);
+      this.pjaxProgressBar_dom.style.width = "100%";
 
       const temp_1 = setTimeout(() => {
-        this.pjaxProgressBar_dom.classList.remove('show')
-        this.pjaxProgressIcon_dom.classList.remove('show')
+        this.pjaxProgressBar_dom.classList.remove("show");
+        this.pjaxProgressIcon_dom.classList.remove("show");
 
         if (this.isHasScrollProgressBar) {
-          this.scrollProgressBar_dom.classList.remove('hide')
+          this.scrollProgressBar_dom.classList.remove("hide");
         }
 
         const temp_2 = setTimeout(() => {
-          this.pjaxProgressBar_dom.style.width = '0'
-          clearTimeout(temp_1), clearTimeout(temp_2)
-        }, 200)
-      }, 200)
+          this.pjaxProgressBar_dom.style.width = "0";
+          clearTimeout(temp_1), clearTimeout(temp_2);
+        }, 200);
+      }, 200);
     },
 
-    // insert tooltip content dom
-    insertTooltipContent() {
-      const init = () => {
-        // tooltip
-        document.querySelectorAll('.tooltip').forEach((element) => {
-          const { content, offsetX, offsetY } = element.dataset
 
-          let style = ''
-          let sTop = ''
-          let sLeft = ''
-          if (offsetX) {
-            sTop = `left: ${offsetX};`
-          }
-          if (offsetY) {
-            sLeft = `top: ${offsetY};`
-          }
-          if (offsetX || offsetY) {
-            style = ` style="${sLeft}${sTop}"`
-          }
 
-          if (content) {
-            element.insertAdjacentHTML(
-              'afterbegin',
-              `<span class="tooltip-content"${style}>${content}</span>`
-            )
-          }
-        })
-
-        // tooltip-img
-        const imgsSet = {}
-
-        const toggleShowImg = (dom, nameIdx) => {
-          document.addEventListener('click', () => {
-            if (imgsSet[nameIdx].isShowImg) {
-              dom.classList.remove('show-img')
-              imgsSet[nameIdx].isShowImg = false
-            }
+    /*
+    calculateMaterialColors(hex) {
+      // Convert hex to RGB
+      hex = hex.replace(/#/g, "");
+      if (hex.length === 3) {
+        hex = hex
+          .split("")
+          .map(function (hex) {
+            return hex + hex;
           })
-        }
-
-        const loadImg = (img, imgLoaded) => {
-          const temp = new Image()
-          const { src } = img.dataset
-          temp.src = src
-          temp.onload = () => {
-            img.src = src
-            img.removeAttribute('lazyload')
-            imgLoaded = true
-          }
-        }
-
-        document.querySelectorAll('.tooltip-img').forEach((dom, idx) => {
-          const { imgUrl, name } = dom.dataset
-          if (imgUrl) {
-            const imgDomClass = `tooltip-img-${name}`
-            const nameIdx = `${name}_${idx}`
-            const imgDom = `<img class="${imgDomClass}" lazyload data-src="${imgUrl}" alt="${name}">`
-            const imgTooltipBox = `<div class="tooltip-img-box">${imgDom}</div>`
-
-            imgsSet[nameIdx] = {
-              imgLoaded: false,
-              isShowImg: false
-            }
-
-            dom.insertAdjacentHTML('afterbegin', imgTooltipBox)
-            dom.addEventListener('click', (e) => {
-              if (!imgsSet[nameIdx].imgLoaded) {
-                loadImg(
-                  document.querySelector(`.tooltip-img-box img.${imgDomClass}`),
-                  imgsSet[nameIdx].imgLoaded
-                )
-              }
-              imgsSet[nameIdx].isShowImg = !imgsSet[nameIdx].isShowImg
-              dom.classList.toggle('show-img')
-              e.stopPropagation()
-            })
-
-            toggleShowImg(dom, nameIdx)
-          }
-        })
+          .join("");
       }
-      setTimeout(() => {
-        init()
-      }, 1000)
-    }
-  }
+      var result = /^([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})[\da-z]{0,0}$/i.exec(
+        hex
+      );
+      if (!result) {
+        return null;
+      }
+      var r = parseInt(result[1], 16);
+      var g = parseInt(result[2], 16);
+      var b = parseInt(result[3], 16);
+      (r /= 255), (g /= 255), (b /= 255);
+      var max = Math.max(r, g, b),
+        min = Math.min(r, g, b);
+      var h,
+        s,
+        l = (max + min) / 2;
+      if (max == min) {
+        h = s = 0;
+      } else {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r:
+            h = (g - b) / d + (g < b ? 6 : 0);
+            break;
+          case g:
+            h = (b - r) / d + 2;
+            break;
+          case b:
+            h = (r - g) / d + 4;
+            break;
+        }
+        h /= 6;
+      }
+      s = s * 100;
+      s = Math.round(s);
+      l = l * 100;
+      l = Math.round(l);
+      h = Math.round(360 * h);
 
-  // init data
-  KEEP.utils.initData()
+      // Compute primary, secondary, and tertiary colors
+      const primaryColor = `hsl(${h}, ${s}%, ${l}%)`;
+      const secondaryColor = `hsl(${h}, ${s - 15}%, ${l - 15}%)`;
+      const tertiaryColor = `hsl(${h}, ${s - 25}%, ${l - 25}%)`;
+      document.documentElement.style.setProperty('--primary-color-temp', primaryColor);
+      document.documentElement.style.setProperty('--secondary-color-temp', secondaryColor);
+      document.documentElement.style.setProperty('--tertiary-color-temp', tertiaryColor);
+    },*/
+  };
 
   // init scroll
-  KEEP.utils.registerWindowScroll()
+  Global.utils.registerWindowScroll();
 
   // toggle show tools list
-  KEEP.utils.toggleShowToolsList()
+  Global.utils.toggleToolsList();
 
   // global font adjust
-  KEEP.utils.globalFontAdjust()
+  Global.utils.globalFontSizeAdjust();
+
+  // adjust content area width
+  Global.utils.contentAreaWidthAdjust();
+
+  // go comment
+  Global.utils.goComment();
 
   // init page height handle
-  KEEP.utils.initPageHeightHandle()
+  Global.utils.initPageHeightHandle();
 
-  // check whether TOC exists
-  KEEP.utils.initHasToc()
+  // init first screen height
+  Global.utils.inithomeBannerHeight();
 
   // big image viewer handle
-  KEEP.utils.zoomInImage()
+  Global.utils.imageViewer();
 
-  // set how long age in home article block
-  KEEP.utils.setHowLongAgoInHome()
+  // set how long ago in home article block
+  Global.utils.relativeTimeInHome();
 
-  // insert tooltip content dom
-  KEEP.utils.insertTooltipContent()
-}
+  // calculate material colors
+  //Global.utils.calculateMaterialColors(Global.theme_config.colors.primary);
+};

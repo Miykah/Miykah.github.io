@@ -2,10 +2,41 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="Hexo Theme Keep">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
     <meta name="author" content="Miykah">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    
+        
+            <link rel="preconnect" href="https://npm.elemecdn.com" crossorigin>
+        
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta property="og:type" content="website">
+<meta property="og:title" content="Miykah&#39;s Zone">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Miykah&#39;s Zone">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Miykah">
+<meta name="twitter:card" content="summary">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305261446083.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305261446083.jpg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305261446083.jpg">
+    <!--- Page Info-->
     
     <title>
         
@@ -14,19 +45,34 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-    <link rel="shortcut icon" href="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305261446083.jpg">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <link rel="stylesheet" href="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/assets/fonts.css">
+    <!--- Font Part-->
+    
+    
+    
+        <link href="" rel="stylesheet">
+    
+    
+
+    <!--- Inject Part-->
+    
     <script id="hexo-configurations">
-    let KEEP = window.KEEP || {}
-    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#e056fd","logo":"https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305261446083.jpg","favicon":"https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305261446083.jpg","avatar":"https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271100366.png","font_size":"16px","font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg2.svg","description":"With no fear in my heart,  god comes into my mind.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"waline","valine":{"appid":"JUod0Zmx1bx8YFtmaC5FVibS-gzGzoHsz","appkey":"zeBhvWKbFbO5M2upibIl2gmO","server_urls":null,"placeholder":"说点什么？"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":"https://comment.miykah.top/","reaction":true,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["炼气","筑基","结丹","元婴","化神"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"center","copyright_info":true},"version":"3.6.1"}
-    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
-    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
-    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+    let Global = window.Global || {};
+    Global.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"};
+    Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["炼气","筑基","结丹","元婴","化神"]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":6,"number":false,"expand":true,"init_open":true},"copyright":true,"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":true,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"300px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":false,"percentage":true},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"With no fear in my heart,  god comes into my mind.","subtitle":{"text":["一闪一闪亮晶晶","好像你的身体","藏在众多孤星之中","还是找得到你","挂在天放光明","反射我的孤寂","提醒我 我也只是一颗寂寞的星星"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://github.com/Miykah","instagram":null,"zhihu":null,"twitter":null,"email":"miykah@163.com"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.1.4","navbar":{"auto_hide":true,"color":{"left":"#f78736","right":"#367df7","transparency":50},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tag"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"},"Links":{"path":"/links","icon":"fa-regular fa-user-group"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/Miykah","Blog":"https://miykah.top/","Friends":"/links"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"right","first_item":"menu","announcement":"好好学习 天天向上","links":{"归档":{"path":"/archives","icon":"fa-regular fa-archive"},"标签":{"path":"/tags","icon":"fa-regular fa-tags"},"分类":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":5}}};
+    Global.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    Global.data_config = {"masonry":false};
   </script>
+    
+    <!--- Fontawesome Part-->
+    <link rel="stylesheet" href="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/fontawesome/fontawesome.min.css">
+    <link rel="stylesheet" href="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/fontawesome/brands.min.css">
+    <link rel="stylesheet" href="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/fontawesome/solid.min.css">
+    <link rel="stylesheet" href="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/fontawesome/regular.min.css">
+    
+    
+    
+    
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Miykah's Zone" type="application/atom+xml">
 </head>
 
@@ -34,12 +80,12 @@
 <body>
 <div class="progress-bar-container">
     
-        <span class="scroll-progress-bar"></span>
-    
 
     
         <span class="pjax-progress-bar"></span>
-        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
     
 </div>
 
@@ -48,49 +94,73 @@
 
     
         
-<div class="first-screen-container flex-center fade-in-down-animation">
+    <style>
+        .home-banner-container {
+            background: transparent !important;
+        }
+        .home-article-item,
+        .sidebar-links,
+        .sidebar-content,
+        a.page-number,
+        a.extend,
+        .sidebar-links .links:hover,
+        .right-bottom-tools,
+        footer.footer {
+            background-color: var(--background-color-transparent-80) !important;
+        }
+        .right-bottom-tools:hover,
+        a.page-number:hover,
+        a.extend:hover {
+            background-color: var(--primary-color) !important;
+        }
+        .site-info,
+        .home-article-sticky-label {
+            background-color: var(--background-color-transparent-15) !important;
+        }
+        .home-article-sticky-label {
+            backdrop-filter: none !important;
+        }
+    </style>
+
+    <div class="home-banner-background">
+    </div>
+
+
+<div class="home-banner-container flex-center">
     <div class="content flex-center">
+        <div class="description fade-in-down-animation" >
+          With no fear in my heart,  god comes into my mind. 
+          
+            <p><i id="subtitle"></i></p>
+          
+        </div>
         
-            <div class="description hitokoto">
-                
-                    <div class="desc-item">With no fear in my heart,  god comes into my mind.</div>
-                
-            </div>
-        
-        
-        
-            <div class="s-icon-list">
+            <div class="social-contacts fade-in-down-animation">
                 
                     
                         
-                        <div class="tooltip s-icon-item "
-                             data-content="GitHub"
-                             data-name="github"
-                             
-                        >
-                            
-                                
-                                    <a target="_blank" href="https://github.com/Miykah">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                
-                            
-                        </div>
-                    
-                
-                    
-                        
-                        <div class="tooltip s-icon-item "
-                             data-content="Email"
-                             data-name="email"
-                             
-                        >
-                            
-                                <a href="mailto:miykah@163.com">
-                                    <i class="fas fa-envelope"></i>
+                            <span class="social-contact-item github">
+                                <a target="_blank" href="https://github.com/Miykah">
+                                    <i class="fa-brands fa-github"></i>
                                 </a>
-                            
-                        </div>
+                            </span>
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                            <span class="social-contact-item email">
+                                <a href="mailto:miykah@163.com">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </a>
+                            </span>
+                        
                     
                 
             </div>
@@ -98,129 +168,282 @@
     </div>
 </div>
 
+
+
     
 
-    <div class="page-main-content is-home">
+    <div class="main-content-container">
 
-        <div class="page-main-content-top">
-            
-<header class="header-wrapper transparent-1">
-
-    <div class="header-content has-first-screen">
+        <div class="main-content-header">
+            <header class="navbar-container">
+    
+    <div class="navbar-content has-home-banner">
         <div class="left">
             
-                <a class="logo-image" href="/">
-                    <img src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305261446083.jpg">
-                </a>
-            
             <a class="logo-title" href="/">
-               Miykah&#39;s Zone
+                <h1>
+                Miykah&#39;s Zone
+                </h1>
             </a>
         </div>
 
         <div class="right">
-            <div class="pc">
-                <ul class="menu-list">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
                     
-                        <li class="menu-item">
-                            <a class="active"
-                               href="/"
-                            >
-                                首页
-                            </a>
-                        </li>
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="active" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        首页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/archives"
-                            >
-                                归档
-                            </a>
-                        </li>
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        归档
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                标签
-                            </a>
-                        </li>
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/tags"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-tag"></i>
+                                        
+                                        标签
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/categories"
-                            >
-                                分类
-                            </a>
-                        </li>
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/categories"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-folder"></i>
+                                        
+                                        分类
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/links"
-                            >
-                                友链
-                            </a>
-                        </li>
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/links"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-user-group"></i>
+                                        
+                                        链接
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                关于
-                            </a>
-                        </li>
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        关于&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/about">ME
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://github.com/Miykah">GITHUB
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://miykah.top/">BLOG
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a href="/links">友情链接
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
                     
                     
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
                         </li>
                     
                 </ul>
             </div>
+            <!-- Mobile -->
             <div class="mobile">
                 
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
                 
-                <div class="icon-item menu-bar">
-                    <div class="menu-bar-middle"></div>
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="header-drawer">
-        <ul class="drawer-menu-list">
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer">
+        <ul class="drawer-navbar-list">
             
-                <li class="drawer-menu-item flex-center">
-                    <a class="active"
-                       href="/">首页</a>
-                </li>
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="active" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                首页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
             
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/archives">归档</a>
-                </li>
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                归档
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
             
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags">标签</a>
-                </li>
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/tags"  >
+                             
+                                
+                                    <i class="fa-regular fa-tag"></i>
+                                
+                                标签
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
             
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/categories">分类</a>
-                </li>
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/categories"  >
+                             
+                                
+                                    <i class="fa-regular fa-folder"></i>
+                                
+                                分类
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
             
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/links">友链</a>
-                </li>
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/links"  >
+                             
+                                
+                                    <i class="fa-regular fa-user-group"></i>
+                                
+                                链接
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
             
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">关于</a>
-                </li>
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                关于&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/about">ME</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://github.com/Miykah">GITHUB</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://miykah.top/">BLOG</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/links">友情链接</a>
+                            </li>
+                        
+                    
             
+
         </ul>
     </div>
 
@@ -231,7 +454,9 @@
 
         </div>
 
-        <div class="page-main-content-middle">
+        <div class="main-content-body">
+
+            
 
             <div class="main-content">
 
@@ -243,31 +468,34 @@
 
                 
 
+                
+
                 <h3 class="home-article-title">
                     <a href="/2023/05/27/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%EF%BC%9F/">
                         如何实现分布式锁？
                     </a>
                 </h3>
 
-                <div class="home-article-content keep-markdown-body">
+                <div class="home-article-content markdown-body">
                     
                         
-本文源自 https://javaguide.cn/
+本文源自 https://javaguide.cn/ 
 
-分布式锁介绍对于单机多线程来说，在 Java 中，我们通常使用 ReetrantLock 类、synchronized 关键字这类 JDK 自带的 本地锁 来控制一个 JVM 进程内的多个线程...
+分布式锁介绍对于单机多线程来说，在 Java 中，我们通常使用 ReetrantLock 类、synchronized 关键字这类 JDK 自带的 本地锁 来控制一个 JVM 进程内的多个线...
                     
                 </div>
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Sat May 27 2023 19:47:54 GMT+0800">
-                2023-05-27
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat May 27 2023 19:33:08 GMT+0800">
+                
+                    2023-05-27
+                
             </span>
         </span>
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
                 <ul>
                     
                         <li>
@@ -287,7 +515,7 @@
         
         
             <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
+                <i class="fa-solid fa-tags"></i>&nbsp;
                 <ul>
                     
                         <li>
@@ -310,12 +538,14 @@
         
     </div>
 
-    <a class="read-more" href="/2023/05/27/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%EF%BC%9F/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2023/05/27/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%EF%BC%9F/">阅读全文<span class="seo-reader-text">如何实现分布式锁？</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
         
             <li class="home-article-item">
+
+                
 
                 
 
@@ -325,7 +555,7 @@
                     </a>
                 </h3>
 
-                <div class="home-article-content keep-markdown-body">
+                <div class="home-article-content markdown-body">
                     
                         评论系统选择Waline 是一款简洁、安全的评论系统。
 具有管理评论和Reaction的功能。如图：
@@ -337,14 +567,15 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Sat May 27 2023 13:43:02 GMT+0800">
-                2023-05-27
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat May 27 2023 11:33:08 GMT+0800">
+                
+                    2023-05-27
+                
             </span>
         </span>
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
                 <ul>
                     
                         <li>
@@ -358,7 +589,7 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
         
         
             <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
+                <i class="fa-solid fa-tags"></i>&nbsp;
                 <ul>
                     
                         <li>
@@ -376,12 +607,14 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
         
     </div>
 
-    <a class="read-more" href="/2023/05/27/Hexo%E9%85%8D%E7%BD%AEWaline%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2023/05/27/Hexo%E9%85%8D%E7%BD%AEWaline%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">阅读全文<span class="seo-reader-text">Hexo配置Waline评论系统</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
         
             <li class="home-article-item">
+
+                
 
                 
 
@@ -391,13 +624,13 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
                     </a>
                 </h3>
 
-                <div class="home-article-content keep-markdown-body">
+                <div class="home-article-content markdown-body">
                     
                         <p>部署到云服务器之后，发现有5个安全漏洞。</p>
 <p>需要根据修复方案自行修复</p>
 <p><img  
                      lazyload
-                     alt="image"
+                     src="/images/loading.svg"
                      data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305261419806.png"
                       alt="image-20230526141902762"
                 ></p>
@@ -406,14 +639,15 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 14:20:05 GMT+0800">
-                2023-05-26
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Fri May 26 2023 14:12:08 GMT+0800">
+                
+                    2023-05-26
+                
             </span>
         </span>
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
                 <ul>
                     
                         <li>
@@ -427,7 +661,7 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
         
         
             <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
+                <i class="fa-solid fa-tags"></i>&nbsp;
                 <ul>
                     
                         <li>
@@ -445,12 +679,14 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
         
     </div>
 
-    <a class="read-more" href="/2023/05/26/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%8E%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2023/05/26/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%8E%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D/">阅读全文<span class="seo-reader-text">项目部署到云服务器后漏洞修复</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
         
             <li class="home-article-item">
+
+                
 
                 
 
@@ -460,12 +696,12 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
                     </a>
                 </h3>
 
-                <div class="home-article-content keep-markdown-body">
+                <div class="home-article-content markdown-body">
                     
                         <p>本文使用自定义注解和AOP面向切面编程实现权限管理。</p>
 <p><img  
                      lazyload
-                     alt="image"
+                     src="/images/loading.svg"
                      data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305261345742.png"
                       alt="image-20230526134510324"
                 ></p>
@@ -474,14 +710,15 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 14:14:24 GMT+0800">
-                2023-05-26
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Fri May 26 2023 13:42:11 GMT+0800">
+                
+                    2023-05-26
+                
             </span>
         </span>
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
                 <ul>
                     
                         <li>
@@ -495,7 +732,7 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
         
         
             <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
+                <i class="fa-solid fa-tags"></i>&nbsp;
                 <ul>
                     
                         <li>
@@ -513,7 +750,7 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
         
     </div>
 
-    <a class="read-more" href="/2023/05/26/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3+AOP%E5%AE%9E%E7%8E%B0%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2023/05/26/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3+AOP%E5%AE%9E%E7%8E%B0%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/">阅读全文<span class="seo-reader-text">自定义注解+AOP实现权限管理</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -522,162 +759,219 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
 
     <div class="home-paginator">
         <div class="paginator">
-    
-
-    
+    <span class="page-number current">1</span>
 </div>
 
     </div>
 </div>
 
-
                 
+
             </div>
+            
+            
+                <div class="home-sidebar-container fade-in-down-animation">
+    <div class="sticky-container">
+        
+            
+                <div class="sidebar-links">
+                    <div class="site-info">
+                        <div class="site-name">Miykah&#39;s Zone</div>
+                        
+                            <div class="announcement">
+                                好好学习 天天向上
+                            </div>
+                        
+                    </div>
+                    
+                        
+                            
+                                <a class="links" href="/archives" target="_blank">
+                                    
+                                        <i class="fa-regular fa-archive icon-space"></i>
+                                    
+                                    <span class="link-name">归档</span>
+                                </a>
+                            
+                        
+                            
+                                <a class="links" href="/tags" target="_blank">
+                                    
+                                        <i class="fa-regular fa-tags icon-space"></i>
+                                    
+                                    <span class="link-name">标签</span>
+                                </a>
+                            
+                        
+                            
+                                <a class="links" href="/categories" target="_blank">
+                                    
+                                        <i class="fa-regular fa-folder icon-space"></i>
+                                    
+                                    <span class="link-name">分类</span>
+                                </a>
+                            
+                        
+                    
+                </div>
+            
+            <div class="sidebar-content"  marginTop >
+                <div class="avatar">
+                    <img src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271100366.png">
+                </div>
+                <div class="author">
+                    <div class="name">Miykah</div>
+                    
+                        <div class="label">炼气</div>
+                    
+                </div>
+                <div class="statistics">
+                    <a class="item" href="/tags">
+                        <div class="number">9</div>
+                        <div class="label">标签</div>
+                    </a>
+                    <a class="item" href="/categories">
+                        <div class="number">4</div>
+                        <div class="label">分类</div>
+                    </a>
+                    <a class="item" href="/archives">
+                        <div class="number">4</div>
+                        <div class="label">文章</div>
+                    </a>
+                </div>
+            </div>
+        
+
+    </div>
+</div>
+
+            
 
         </div>
 
-        <div class="page-main-content-bottom">
-            
-<footer class="footer">
+        <div class="main-content-footer">
+            <footer class="footer">
     <div class="info-container">
-        <div class="copyright-info info-item">
+        <div class="copyright-info">
             &copy;
             
-                <span>2023</span> -
+              <span>2023</span>
+              -
             
-            2023
-            
-                &nbsp;<i class="fas fa-heart icon-animate"></i>
-                &nbsp;<a href="/">Miykah</a>
-            
+            2023&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Miykah</a>
         </div>
         
-            <script async data-pjax
-                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
-                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
+                    </span>
                 
                 
-                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
+                    </span>
                 
             </div>
         
-
-        <!-- 添加网站运行时间 -->
-        
-            <div class="timerun-info info-item">
-                <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-                <script>
-                var now = new Date();
-                function createtime() {
-                    //此处修改你的建站时间或者网站上线时间
-                    var create_time = '05/25/2023 22:02:36';
-                    var grt = new Date(create_time);
-                    now.setTime(now.getTime() + 250);
-                    days = (now - grt) / 1000 / 60 / 60 / 24;
-                    dnum = Math.floor(days);
-                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
-                    hnum = Math.floor(hours);
-                    if (String(hnum).length == 1) {
-                        hnum = "0" + hnum;
-                    }
-                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
-                    mnum = Math.floor(minutes);
-                    if (String(mnum).length == 1) {
-                        mnum = "0" + mnum;
-                    }
-                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-                    snum = Math.round(seconds);
-                    if (String(snum).length == 1) {
-                        snum = "0" + snum;
-                    }
-                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
-                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
-                }
-                setInterval("createtime()", 250);
-                </script>
-            </div>
-        
-
         <div class="theme-info info-item">
-            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+            <span class="powered-by-container">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 驱动</span>
+                <br>
+            <span class="theme-version-container">主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.1.4</a>
         </div>
         
-            <div class="icp-info info-item">
-                <a target="_blank" rel="nofollow"
-                   href="https://beian.miit.gov.cn"
-                >
-                    蜀ICP备2022000428号-1
-                </a>
+            <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="
+                
+                https://beian.miit.gov.cn
+                
+                ">蜀ICP备2022000428号-1</a></div>
+        
+        
+        
+            <div id="start_div" style="display:none">
+                2023/5/25 22:02:14
+            </div>
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
             </div>
         
         
-            <div class="deploy-info info-item">
-                
-                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
-                
-            </div>
+            <div class="customize-info info-item">前面忘了，中间忘了，后面忘了。</div>
         
-    </div>
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
 </footer>
-
         </div>
     </div>
 
     
 
-    <div class="right-bottom-side-tools">
+    <div class="right-side-tools-container">
         <div class="side-tools-container">
-    <ul class="side-tools-list">
-        <li class="tools-item tool-font-adjust-plus flex-center">
-            <i class="fas fa-search-plus"></i>
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
         </li>
 
-        <li class="tools-item tool-font-adjust-minus flex-center">
-            <i class="fas fa-search-minus"></i>
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
         </li>
 
-        <li class="tools-item tool-dark-light-toggle flex-center">
-            <i class="fas fa-moon"></i>
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
         </li>
 
         <!-- rss -->
         
-            <li class="tools-item rss flex-center">
-                <a class="flex-center"
-                   href="/atom.xml"
-                   target="_blank"
-                >
-                    <i class="fas fa-rss"></i>
-                </a>
-            </li>
-        
 
         
 
-        <li class="tools-item tool-scroll-to-bottom flex-center">
-            <i class="fas fa-arrow-down"></i>
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
         </li>
     </ul>
 
-    <ul class="exposed-tools-list">
-        <li class="tools-item tool-toggle-show flex-center">
-            <i class="fas fa-cog fa-spin"></i>
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
         </li>
         
-            <li class="tools-item tool-scroll-to-top flex-center">
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
                 <i class="arrow-up fas fa-arrow-up"></i>
                 <span class="percent"></span>
             </li>
+        
         
     </ul>
 </div>
 
     </div>
 
-    <div class="zoom-in-image-mask">
-    <img class="zoom-in-image">
+    <div class="image-viewer-container">
+    <img src="">
 </div>
 
 
@@ -686,7 +980,7 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
     <div class="popup search-popup">
         <div class="search-header">
           <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
+            <i class="fa-solid fa-keyboard"></i>
           </span>
             <div class="search-input-container">
                 <input autocomplete="off"
@@ -698,13 +992,13 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
                        class="search-input"
                 >
             </div>
-            <span class="close-popup-btn">
-                <i class="fas fa-times"></i>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
             </span>
         </div>
         <div id="search-result">
             <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
             </div>
         </div>
     </div>
@@ -712,25 +1006,39 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
 
     
 
+
 </main>
 
 
 
 
-<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+<script src="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/js/utils.js"></script><script src="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/js/main.js"></script><script src="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/js/layouts/navbarShrink.js"></script><script src="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/js/tools/scrollTopBottom.js"></script><script src="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/js/tools/lightDarkSwitch.js"></script>
+
+
+    <script src="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/js/tools/localSearch.js"></script>
+
+
+
+    <script src="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/js/tools/codeBlock.js"></script>
+
+
+
+    <script src="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/js/layouts/lazyload.js"></script>
+
+
+
+    <script src="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/js/tools/runtime.js"></script>
+    <script src="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/js/layouts/odometer.min.js"></script>
+    <link rel="stylesheet" href="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/assets/odometer-theme-minimal.css">
+
+
+
+  <script src="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/js/libs/Typed.min.js"></script>
+  <script src="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/js/plugins/typed.js"></script>
 
 
 
 
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
-
-
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
-
-
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
 
 
 <div class="post-scripts pjax">
@@ -738,14 +1046,14 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
 </div>
 
 
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+    <script src="//npm.elemecdn.com/hexo-theme-redefine@2.1.4/source/js/libs/pjax.min.js"></script>
 <script>
     window.addEventListener('DOMContentLoaded', () => {
         window.pjax = new Pjax({
             selectors: [
                 'head title',
                 '.page-container',
-                '.pjax'
+                '.pjax',
             ],
             history: true,
             debug: false,
@@ -758,16 +1066,17 @@ Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数�
         });
 
         document.addEventListener('pjax:send', () => {
-            KEEP.utils.pjaxProgressBarStart();
+            Global.utils.pjaxProgressBarStart();
         });
 
         document.addEventListener('pjax:complete', () => {
-            KEEP.utils.pjaxProgressBarEnd();
+            Global.utils.pjaxProgressBarEnd();
             window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
-            KEEP.refresh();
+            Global.refresh();
         });
     });
 </script>
+
 
 
 

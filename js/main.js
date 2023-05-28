@@ -1,74 +1,76 @@
-/* global KEEP */
+/* global function */
 
 window.addEventListener('DOMContentLoaded', () => {
-  const { version, local_search, code_block, code_copy, lazyload } = KEEP.theme_config
 
-  KEEP.themeInfo = {
-    theme: `Keep v${version}`,
-    author: 'XPoet',
-    repository: 'https://github.com/XPoet/hexo-theme-keep'
+  Global.themeInfo = {
+    theme: `Redefine v${Global.theme_config.version}`,
+    author: 'EvanNotFound',
+    repository: 'https://github.com/EvanNotFound/hexo-theme-redefine'
   }
 
-  KEEP.localStorageKey = 'KEEP-THEME-STATUS'
+  Global.localStorageKey = 'Global-THEME-STATUS';
 
-  KEEP.styleStatus = {
+  Global.styleStatus = {
     isExpandPageWidth: false,
     isDark: false,
     fontSizeLevel: 0,
-    isShowToc: true
+    isOpenPageAside: true
   }
 
   // print theme base info
-  KEEP.printThemeInfo = () => {
-    console.log(
-      `\n %c ${KEEP.themeInfo.theme} %c ${KEEP.themeInfo.repository} \n`,
-      `color: #fadfa3; background: #333; padding: 6px 0;`,
-      `padding: 6px 0;`
-    )
+  Global.printThemeInfo = () => {
+    console.log(`      ______ __  __  ______  __    __  ______                       \r\n     \/\\__  _\/\\ \\_\\ \\\/\\  ___\\\/\\ \"-.\/  \\\/\\  ___\\                      \r\n     \\\/_\/\\ \\\\ \\  __ \\ \\  __\\\\ \\ \\-.\/\\ \\ \\  __\\                      \r\n        \\ \\_\\\\ \\_\\ \\_\\ \\_____\\ \\_\\ \\ \\_\\ \\_____\\                    \r\n         \\\/_\/ \\\/_\/\\\/_\/\\\/_____\/\\\/_\/  \\\/_\/\\\/_____\/                    \r\n                                                               \r\n ______  ______  _____   ______  ______ __  __   __  ______    \r\n\/\\  == \\\/\\  ___\\\/\\  __-.\/\\  ___\\\/\\  ___\/\\ \\\/\\ \"-.\\ \\\/\\  ___\\   \r\n\\ \\  __<\\ \\  __\\\\ \\ \\\/\\ \\ \\  __\\\\ \\  __\\ \\ \\ \\ \\-.  \\ \\  __\\   \r\n \\ \\_\\ \\_\\ \\_____\\ \\____-\\ \\_____\\ \\_\\  \\ \\_\\ \\_\\\\\"\\_\\ \\_____\\ \r\n  \\\/_\/ \/_\/\\\/_____\/\\\/____\/ \\\/_____\/\\\/_\/   \\\/_\/\\\/_\/ \\\/_\/\\\/_____\/\r\n                                                               \r\n  Github: https:\/\/github.com\/EvanNotFound\/hexo-theme-redefine`);
   }
 
   // set styleStatus to localStorage
-  KEEP.setStyleStatus = () => {
-    localStorage.setItem(KEEP.localStorageKey, JSON.stringify(KEEP.styleStatus))
+  Global.setStyleStatus = () => {
+    localStorage.setItem(Global.localStorageKey, JSON.stringify(Global.styleStatus));
   }
 
   // get styleStatus from localStorage
-  KEEP.getStyleStatus = () => {
-    let temp = localStorage.getItem(KEEP.localStorageKey)
+  Global.getStyleStatus = () => {
+    let temp = localStorage.getItem(Global.localStorageKey);
     if (temp) {
-      temp = JSON.parse(temp)
-      for (let key in KEEP.styleStatus) {
-        KEEP.styleStatus[key] = temp[key]
+      temp = JSON.parse(temp);
+      for (let key in Global.styleStatus) {
+        Global.styleStatus[key] = temp[key];
       }
-      return temp
+      return temp;
     } else {
-      return null
+      return null;
     }
   }
 
-  KEEP.refresh = () => {
-    KEEP.initUtils()
-    KEEP.initHeaderShrink()
-    KEEP.initModeToggle()
-    KEEP.initBack2Top()
-
-    if (local_search?.enable === true) {
-      KEEP.initLocalSearch()
+  Global.refresh = () => {
+    Global.initUtils();
+    navbarShrink.init();
+    if (Global.data_config.masonry) {
+      Global.initMasonry();
+    }
+    Global.initModeToggle();
+    Global.initBackToTop();
+    if (Global.theme_config.home_banner.subtitle.text.length !== 0  && location.pathname === Global.hexo_config.root) {
+      Global.initTyped('subtitle');
     }
 
-    if (
-      code_block?.tools?.enable === true ||
-      code_block?.enable === true ||
-      code_copy?.enable === true
-    ) {
-      KEEP.initCodeBlockTools()
+    if (Global.theme_config.plugins.mermaid.enable === true) {
+      Global.initMermaid();
     }
 
-    if (lazyload?.enable === true) {
-      KEEP.initLazyLoad()
+    if (Global.theme_config.navbar.search.enable === true) {
+      Global.initLocalSearch();
     }
+
+    if (Global.theme_config.articles.code_block.copy === true) {
+      Global.initCopyCode();
+    }
+
+    if (Global.theme_config.articles.lazyload === true) {
+      Global.initLazyLoad();
+    }
+
   }
 
-  KEEP.printThemeInfo()
-  KEEP.refresh()
-})
+  Global.printThemeInfo();
+  Global.refresh();
+});
