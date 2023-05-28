@@ -17,34 +17,27 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2023/05/27/hexo配置waline评论系统/"/>
+    <link rel="canonical" href="https://miykah.top/2023/053147ab93"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="评论系统选择Waline 是一款简洁、安全的评论系统。 具有管理评论和Reaction的功能。如图：   Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数据库和 Vercel 服务端https:&#x2F;&#x2F;waline.js.org&#x2F;guide&#x2F;get-started&#x2F;  修改主题配置文件 _config.yml 启用评论，并使用 waline 评论系统">
+        <meta name="description" content="部署到云服务器之后，发现有5个安全漏洞。 需要根据修复方案自行修复">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo配置Waline评论系统">
-<meta property="og:url" content="http://example.com/2023/05/27/Hexo%E9%85%8D%E7%BD%AEWaline%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:title" content="项目部署到云服务器后漏洞修复">
+<meta property="og:url" content="https://miykah.top/2023/053147ab93">
 <meta property="og:site_name" content="Miykah&#39;s Zone">
-<meta property="og:description" content="评论系统选择Waline 是一款简洁、安全的评论系统。 具有管理评论和Reaction的功能。如图：   Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数据库和 Vercel 服务端https:&#x2F;&#x2F;waline.js.org&#x2F;guide&#x2F;get-started&#x2F;  修改主题配置文件 _config.yml 启用评论，并使用 waline 评论系统">
+<meta property="og:description" content="部署到云服务器之后，发现有5个安全漏洞。 需要根据修复方案自行修复">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203229.png">
-<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203220.png">
-<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203226.png">
-<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271212151.png">
-<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203209.png">
-<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203203.png">
-<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203402.png">
-<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203436.png">
-<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203465.png">
-<meta property="article:published_time" content="2023-05-27T03:33:08.000Z">
-<meta property="article:modified_time" content="2023-05-27T05:43:02.517Z">
+<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305261419806.png">
+<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305261420214.png">
+<meta property="article:published_time" content="2023-05-26T06:12:08.000Z">
+<meta property="article:modified_time" content="2023-05-26T06:20:05.893Z">
 <meta property="article:author" content="Miykah">
-<meta property="article:tag" content="waline">
-<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="项目部署">
+<meta property="article:tag" content="云服务器">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203229.png">
+<meta name="twitter:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305261419806.png">
     
     
     <!--- Icon Part-->
@@ -56,7 +49,7 @@
     
     <title>
         
-            Hexo配置Waline评论系统 -
+            项目部署到云服务器后漏洞修复 -
         
         Miykah&#39;s Zone
     </title>
@@ -76,7 +69,7 @@
     
     <script id="hexo-configurations">
     let Global = window.Global || {};
-    Global.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"};
+    Global.hexo_config = {"hostname":"miykah.top","root":"/","language":"zh-CN","path":"search.json"};
     Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["炼气","筑基","结丹","元婴","化神"]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":6,"number":false,"expand":true,"init_open":true},"copyright":false,"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":true,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"300px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":false,"percentage":true},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/bg-light.png","dark":"/images/bg-dark.png"},"title":"With no fear in my heart,  god comes into my mind.","subtitle":{"text":["一闪一闪亮晶晶","好像你的身体","藏在众多孤星之中","还是找得到你","挂在天放光明","反射我的孤寂","提醒我 我也只是一颗寂寞的星星"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://github.com/Miykah","instagram":null,"zhihu":null,"twitter":null,"email":"miykah@163.com"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.1.4","navbar":{"auto_hide":true,"color":{"left":"#f78736","right":"#367df7","transparency":10},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tag"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"},"Links":{"path":"/links","icon":"fa-regular fa-user-group"},"说说":{"path":"/shuoshuo","icon":"fa-regular fa-message"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/Miykah","Blog":"https://miykah.top/","Friends":"/links"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"right","first_item":"menu","announcement":"好好学习 天天向上","links":{"归档":{"path":"/archives","icon":"fa-regular fa-archive"},"标签":{"path":"/tags","icon":"fa-regular fa-tags"},"分类":{"path":"/categories","icon":"fa-regular fa-folder"},"说说":{"path":"/shuoshuo","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":5}}};
     Global.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
     Global.data_config = {"masonry":false};
@@ -255,7 +248,7 @@
                                         </li>
                                     
                                         <li>
-                                        <a target="_blank" rel="noopener" href="https://miykah.top/">BLOG
+                                        <a href="https://miykah.top/">BLOG
                                         </a>
                                         </li>
                                     
@@ -405,7 +398,7 @@
                             </li>
                         
                             <li class="dropdown-item flex-center">
-                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://miykah.top/">BLOG</a>
+                                <a class="dropdown-item" href="https://miykah.top/">BLOG</a>
                             </li>
                         
                             <li class="dropdown-item flex-center">
@@ -439,7 +432,7 @@
             
             
                 <div class="article-title">
-                    <h1 class="article-title-regular">Hexo配置Waline评论系统</h1>
+                    <h1 class="article-title-regular">项目部署到云服务器后漏洞修复</h1>
                 </div>
             
                 
@@ -461,15 +454,15 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2023-05-27 11:33:08</span>
-        <span class="mobile">2023-05-27 11:33</span>
+        <span class="desktop">2023-05-26 14:12:08</span>
+        <span class="mobile">2023-05-26 14:12</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-05-27 13:43:02</span>
-            <span class="mobile">2023-05-27 13:43</span>
+            <span class="desktop">2023-05-26 14:20:05</span>
+            <span class="mobile">2023-05-26 14:20</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -480,7 +473,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>&nbsp;
+                        <a href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>&nbsp;
                     </li>
                 
             </ul>
@@ -492,11 +485,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/waline/">waline</a>&nbsp;
+                        <a href="/tags/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">项目部署</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/Hexo/">Hexo</a>&nbsp;
+                        | <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">云服务器</a>&nbsp;
                     </li>
                 
             </ul>
@@ -506,7 +499,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>511 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>516 字</span>
         </span>
     
     
@@ -527,106 +520,37 @@
             
 
             <div class="article-content markdown-body">
-                <h1 id="评论系统选择"><a href="#评论系统选择" class="headerlink" title="评论系统选择"></a>评论系统选择</h1><p>Waline 是一款简洁、安全的评论系统。</p>
-<p>具有管理评论和Reaction的功能。如图：</p>
+                <p>部署到云服务器之后，发现有5个安全漏洞。</p>
+<p>需要根据修复方案自行修复</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203229.png"
-                      alt="image-20230527113844370"
+                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305261419806.png"
+                      alt="image-20230526141902762"
                 ></p>
+<span id="more"></span>
+
+<h1 id="Apache-Dubbo-漏洞修复"><a href="#Apache-Dubbo-漏洞修复" class="headerlink" title="Apache Dubbo 漏洞修复"></a>Apache Dubbo 漏洞修复</h1><p>将 Apache Dubbo 3.0.9 升级到 3.0.14 及以上版本</p>
+<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- dubbo --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.dubbo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>dubbo<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.14<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<h1 id="FasterXML-jackson-databind-漏洞修复"><a href="#FasterXML-jackson-databind-漏洞修复" class="headerlink" title="FasterXML jackson-databind 漏洞修复"></a>FasterXML jackson-databind 漏洞修复</h1><p>查看 Maven 依赖发现是 Nacos 依赖了 FasterXML jackson-databind 2.13.3。</p>
+<p>需要排除掉 Nacos 中的 jackson-databind 和 jackson-core 2.13.3 依赖，自己引入 2.14.0 以上版本</p>
+<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- nacos 注册中心 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.nacos<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>nacos-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 排除掉nacos依赖的有高危漏洞的2.13jackson，自己引入 2.14.0以上的  --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.14.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<h1 id="Spring-Framework-身份认证绕过漏洞"><a href="#Spring-Framework-身份认证绕过漏洞" class="headerlink" title="Spring Framework 身份认证绕过漏洞"></a><strong>Spring Framework 身份认证绕过漏洞</strong></h1><p>发现是 spring-webmvc-5.3.20 的问题，查看 Maven 依赖，是 spring-boot-starter-web:2.7.0 引入。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203220.png"
-                      alt="image-20230527113851143"
+                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305261420214.png"
+                      alt="image-20230526142002186"
                 ></p>
-<h1 id="Hexo-Keep主题配置Waline评论系统"><a href="#Hexo-Keep主题配置Waline评论系统" class="headerlink" title="Hexo-Keep主题配置Waline评论系统"></a>Hexo-Keep主题配置Waline评论系统</h1><h2 id="根据-Waline-文档部署-LeanCloud-数据库和-Vercel-服务端"><a href="#根据-Waline-文档部署-LeanCloud-数据库和-Vercel-服务端" class="headerlink" title="根据 Waline 文档部署 LeanCloud 数据库和 Vercel 服务端"></a>根据 Waline 文档部署 LeanCloud 数据库和 Vercel 服务端</h2><p><a class="link"   target="_blank" rel="noopener" href="https://waline.js.org/guide/get-started/" >https://waline.js.org/guide/get-started/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h2 id="修改主题配置文件-config-yml"><a href="#修改主题配置文件-config-yml" class="headerlink" title="修改主题配置文件 _config.yml"></a>修改主题配置文件 _config.yml</h2><ol>
-<li><p>启用评论，并使用 waline 评论系统</p>
-<div class="highlight-container" data-rel="Yml"><figure class="iseeu highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">comment:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>   <span class="comment"># Option values: true | false</span></span><br><span class="line">  <span class="attr">use:</span> <span class="string">waline</span>     <span class="comment"># Option values: valine | gitalk | twikoo | waline</span></span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>配置 waline</p>
-<p><code>server_url</code> 是成功部署 Waline 评论系统的服务端地址。</p>
-<p><code>reaction</code> 设置开启文章反应，可选值：<code>true</code> 或 <code>false</code>。</p>
-<p><code>version</code> 设置 Waline 评论系统版本，Keep 主题内置使用 Waline <code>v2</code>，你可以自行更改。</p>
-<div class="highlight-container" data-rel="Yml"><figure class="iseeu highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">server_url:</span> <span class="string">https://comment-waline-server-qk96wik8t-miykah.vercel.app/</span> <span class="comment"># Server URL</span></span><br><span class="line">  <span class="attr">reaction:</span> <span class="literal">true</span> <span class="comment"># Article reactions, Option values: true | false</span></span><br><span class="line">  <span class="attr">version:</span> <span class="number">2</span>      <span class="comment"># Waline version, default use v2</span></span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>评论系统启用成功</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203226.png"
-                      alt="image-20230527114452740"
-                ></p>
-</li>
-</ol>
-<h1 id="评论系统与管理系统"><a href="#评论系统与管理系统" class="headerlink" title="评论系统与管理系统"></a>评论系统与管理系统</h1><blockquote>
-<p>评论系统：example.yourdomain.com      我的：<a class="link"   target="_blank" rel="noopener" href="https://comment.miykah.top/" >https://comment.miykah.top/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>评论管理：example.yourdomain.com&#x2F;ui   我的：<a class="link"   target="_blank" rel="noopener" href="https://comment.miykah.top/ui" >https://comment.miykah.top/ui <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-</blockquote>
-<p>评论管理系统可以进行评论管理以及用户管理：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271212151.png"
-                      alt="image-202305271212151"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203209.png"
-                      alt="image-20230527120150930"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203203.png"
-                      alt="image-20230527120159505"
-                ></p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="只有在挂了梯子之后才能流畅访问"><a href="#只有在挂了梯子之后才能流畅访问" class="headerlink" title="只有在挂了梯子之后才能流畅访问"></a>只有在挂了梯子之后才能流畅访问</h2><blockquote>
-<p>不连接梯子的情况下， 博客的评论一直加载不出来，百度了一下，发现是 vercel.app 的域名问题。</p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/Panzer_Jack/article/details/127418379" >https://blog.csdn.net/Panzer_Jack/article/details/127418379 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-</blockquote>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><blockquote>
-<p>参考：</p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/Panzer_Jack/article/details/127418379" >https://blog.csdn.net/Panzer_Jack/article/details/127418379 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://waline.js.org/guide/get-started/#%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D-%E5%8F%AF%E9%80%89" >https://waline.js.org/guide/get-started/#%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D-%E5%8F%AF%E9%80%89 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-</blockquote>
-<ol>
-<li><p>首先需要有一个域名，比如我有一个 <code>miykah.top</code> 域名</p>
-</li>
-<li><p>域名解析添加记录：取一个二级域名为 <code>comment</code> ，记录值为 <code>cname.vercel-dns.com</code> </p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203402.png"
-                      alt="image-20230527114655250"
-                ></p>
-</li>
-<li><p>在vercel部署的服务端中绑定域名 <code>comment.miykah.top</code></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203436.png"
-                      alt="image-20230527114805551"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203465.png"
-                      alt="image-20230527114832215"
-                ></p>
-</li>
-<li><p>修改主题配置文件 _config.yml</p>
-<div class="highlight-container" data-rel="Yml"><figure class="iseeu highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">server_url:</span> <span class="string">https://comment.miykah.top/</span> <span class="comment"># 改为绑定的评论系统新域名</span></span><br><span class="line">  <span class="attr">reaction:</span> <span class="literal">true</span> <span class="comment"># Article reactions, Option values: true | false</span></span><br><span class="line">  <span class="attr">version:</span> <span class="number">2</span>      <span class="comment"># Waline version, default use v2</span></span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>问题解决！不挂梯子也能加载出评论！</p>
-</li>
-</ol>
-<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h2 id="配置邮件通知"><a href="#配置邮件通知" class="headerlink" title="配置邮件通知"></a>配置邮件通知</h2><p>参考：</p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://waline.js.org/guide/features/notification.html#%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5" >https://waline.js.org/guide/features/notification.html#%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://oragekk.me/blog/waline-mail.html" >https://oragekk.me/blog/waline-mail.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>直接将项目的 spring boot 版本升级到 2.7.11</p>
+<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.11<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>但升级之后下载不到 mysql-connector-java 的 jar包，因为我们没有指定版本。</p>
+<p>手动指定 mysql-connector-java 的版本即可解决</p>
+<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- mysql--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--为了修复Spring Framework漏洞 将Spring boot版本升到2.7.11后，</span></span><br><span class="line"><span class="comment">  mysql-connector-java 找不到，只能指定版本--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.31<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
 
             </div>
 
@@ -636,11 +560,11 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/waline/">#waline</a>&nbsp;
+                            <a href="/tags/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">#项目部署</a>&nbsp;
                         </li>
                     
                         <li class="tag-item">
-                            <a href="/tags/Hexo/">#Hexo</a>&nbsp;
+                            <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">#云服务器</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -654,13 +578,13 @@
                         <div class="article-prev">
                             <a class="prev"
                             rel="prev"
-                            href="/2023/05/27/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%EF%BC%9F/"
+                            href="/2023/052b5287fd"
                             >
                                 <span class="left arrow-icon flex-center">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </span>
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">如何实现分布式锁？</span>
+                                    <span class="post-nav-title-item">Hexo配置Waline评论系统</span>
                                     <span class="post-nav-item">上一篇</span>
                                 </span>
                             </a>
@@ -670,10 +594,10 @@
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2023/05/26/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%8E%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D/"
+                            href="/2023/056193a949"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">项目部署到云服务器后漏洞修复</span>
+                                    <span class="post-nav-title-item">自定义注解+AOP实现权限管理</span>
                                     <span class="post-nav-item">下一篇</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -738,8 +662,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">Hexo配置Waline评论系统</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E9%80%89%E6%8B%A9"><span class="nav-text">评论系统选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-Keep%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AEWaline%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F"><span class="nav-text">Hexo-Keep主题配置Waline评论系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE-Waline-%E6%96%87%E6%A1%A3%E9%83%A8%E7%BD%B2-LeanCloud-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C-Vercel-%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="nav-text">根据 Waline 文档部署 LeanCloud 数据库和 Vercel 服务端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-config-yml"><span class="nav-text">修改主题配置文件 _config.yml</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-text">评论系统与管理系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AA%E6%9C%89%E5%9C%A8%E6%8C%82%E4%BA%86%E6%A2%AF%E5%AD%90%E4%B9%8B%E5%90%8E%E6%89%8D%E8%83%BD%E6%B5%81%E7%95%85%E8%AE%BF%E9%97%AE"><span class="nav-text">只有在挂了梯子之后才能流畅访问</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-text">解决办法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6"><span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5"><span class="nav-text">配置邮件通知</span></a></li></ol></li></ol>
+        <div class="page-title">项目部署到云服务器后漏洞修复</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Apache-Dubbo-%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D"><span class="nav-text">Apache Dubbo 漏洞修复</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FasterXML-jackson-databind-%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D"><span class="nav-text">FasterXML jackson-databind 漏洞修复</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Framework-%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E7%BB%95%E8%BF%87%E6%BC%8F%E6%B4%9E"><span class="nav-text">Spring Framework 身份认证绕过漏洞</span></a></li></ol>
 
     </div>
 </div>
