@@ -17,26 +17,25 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://miykah.top/2023/05/29/乐观锁和悲观锁/"/>
+    <link rel="canonical" href="https://miykah.top/2023/06/14/7.后端项目整合swagger + knife4j接口文档/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="什么是悲观锁？悲观锁总是假设最坏的情况，认为共享资源每次被访问的时候就会出现问题(比如共享数据被修改)，所以每次在获取资源操作的时候都会上锁，这样其他线程想拿到这个资源就会阻塞直到锁被上一个持有者释放。也就是说，共享资源每次只给一个线程使用，其它线程阻塞，用完后再把资源转让给其它线程。 像 Java 中synchronized和ReentrantLock等独占锁就是悲观锁思想的实现。 123456">
+        <meta name="description" content="接口文档什么是接口文档？前后端接口文档是用于描述前端应用程序和后端服务器之间通信的规范和约定的文档。在一个典型的前后端分离的应用程序中，前端应用程序和后端服务器通过接口进行数据交换和通信。 接口文档通常包含以下内容：  接口列表：列出了前后端之间可用的所有接口，每个接口通常都有一个唯一的标识符和名称。 接口描述：对每个接口进行详细的描述，包括接口的功能、用途、输入参数、输出结果以及可能的错误情况等">
 <meta property="og:type" content="article">
-<meta property="og:title" content="乐观锁和悲观锁">
-<meta property="og:url" content="https://miykah.top/2023/05/29/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/index.html">
+<meta property="og:title" content="后端项目整合Swagger+Knife4j接口文档">
+<meta property="og:url" content="https://miykah.top/2023/06/14/7.%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88Swagger%20+%20Knife4j%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/index.html">
 <meta property="og:site_name" content="Miykah&#39;s Zone">
-<meta property="og:description" content="什么是悲观锁？悲观锁总是假设最坏的情况，认为共享资源每次被访问的时候就会出现问题(比如共享数据被修改)，所以每次在获取资源操作的时候都会上锁，这样其他线程想拿到这个资源就会阻塞直到锁被上一个持有者释放。也就是说，共享资源每次只给一个线程使用，其它线程阻塞，用完后再把资源转让给其它线程。 像 Java 中synchronized和ReentrantLock等独占锁就是悲观锁思想的实现。 123456">
+<meta property="og:description" content="接口文档什么是接口文档？前后端接口文档是用于描述前端应用程序和后端服务器之间通信的规范和约定的文档。在一个典型的前后端分离的应用程序中，前端应用程序和后端服务器通过接口进行数据交换和通信。 接口文档通常包含以下内容：  接口列表：列出了前后端之间可用的所有接口，每个接口通常都有一个唯一的标识符和名称。 接口描述：对每个接口进行详细的描述，包括接口的功能、用途、输入参数、输出结果以及可能的错误情况等">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305290956687.png">
-<meta property="article:published_time" content="2023-05-29T01:55:08.000Z">
-<meta property="article:modified_time" content="2023-05-29T02:01:54.922Z">
+<meta property="article:published_time" content="2023-06-14T07:56:00.000Z">
+<meta property="article:modified_time" content="2023-06-15T12:17:18.557Z">
 <meta property="article:author" content="Miykah">
-<meta property="article:tag" content="锁">
-<meta property="article:tag" content="并发">
+<meta property="article:tag" content="接口文档">
+<meta property="article:tag" content="Swagger">
+<meta property="article:tag" content="Knife4j">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305290956687.png">
     
     
     <!--- Icon Part-->
@@ -48,7 +47,7 @@
     
     <title>
         
-            乐观锁和悲观锁 -
+            后端项目整合Swagger+Knife4j接口文档 -
         
         Miykah&#39;s Zone
     </title>
@@ -431,7 +430,7 @@
             
             
                 <div class="article-title">
-                    <h1 class="article-title-regular">乐观锁和悲观锁</h1>
+                    <h1 class="article-title-regular">后端项目整合Swagger+Knife4j接口文档</h1>
                 </div>
             
                 
@@ -453,15 +452,15 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2023-05-29 09:55:08</span>
-        <span class="mobile">2023-05-29 09:55</span>
+        <span class="desktop">2023-06-14 15:56</span>
+        <span class="mobile">2023-06-14 15:56</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-05-29 10:01:54</span>
-            <span class="mobile">2023-05-29 10:01</span>
+            <span class="desktop">2023-06-15 20:17:18</span>
+            <span class="mobile">2023-06-15 20:17</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -472,7 +471,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Java/">Java</a>&nbsp;
+                        <a href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>&nbsp;
                     </li>
                 
             </ul>
@@ -484,11 +483,15 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E9%94%81/">锁</a>&nbsp;
+                        <a href="/tags/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/">接口文档</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/%E5%B9%B6%E5%8F%91/">并发</a>&nbsp;
+                        | <a href="/tags/Swagger/">Swagger</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Knife4j/">Knife4j</a>&nbsp;
                     </li>
                 
             </ul>
@@ -498,12 +501,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.4k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.1k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>8 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>4 分钟</span>
         </span>
     
     
@@ -519,73 +522,57 @@
             
 
             <div class="article-content markdown-body">
-                <h1 id="什么是悲观锁？"><a href="#什么是悲观锁？" class="headerlink" title="什么是悲观锁？"></a>什么是悲观锁？</h1><p>悲观锁总是假设最坏的情况，认为共享资源每次被访问的时候就会出现问题(比如共享数据被修改)，所以每次在获取资源操作的时候都会上锁，这样其他线程想拿到这个资源就会阻塞直到锁被上一个持有者释放。也就是说，<strong>共享资源每次只给一个线程使用，其它线程阻塞，用完后再把资源转让给其它线程</strong>。</p>
-<p>像 Java 中<code>synchronized</code>和<code>ReentrantLock</code>等独占锁就是悲观锁思想的实现。</p>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">performSynchronisedTask</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="built_in">this</span>) &#123;</span><br><span class="line">        <span class="comment">// 需要同步的操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">Lock</span> <span class="variable">lock</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ReentrantLock</span>();</span><br><span class="line">lock.lock();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   <span class="comment">// 需要同步的操作</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    lock.unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>高并发的场景下，激烈的锁竞争会造成线程阻塞，大量阻塞线程会导致系统的上下文切换，增加系统的性能开销。并且，悲观锁还可能会存在死锁问题，影响代码的正常运行。</p>
-<h1 id="什么是乐观锁？"><a href="#什么是乐观锁？" class="headerlink" title="什么是乐观锁？"></a>什么是乐观锁？</h1><p>乐观锁总是假设最好的情况，认为共享资源每次被访问的时候不会出现问题，线程可以不停地执行，无需加锁也无需等待，只是在提交修改的时候去验证对应的资源（也就是数据）是否被其它线程修改了（具体方法可以使用版本号机制或 CAS 算法）。</p>
-<p>在 Java 中<code>java.util.concurrent.atomic</code>包下面的原子变量类（比如<code>AtomicInteger</code>、<code>LongAdder</code>）就是使用了乐观锁的一种实现方式 <strong>CAS</strong> 实现的。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305290956687.png"
-                      alt="JUC原子类概览"
-                ></p>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// LongAdder 在高并发场景下会比 AtomicInteger 和 AtomicLong 的性能更好</span></span><br><span class="line"><span class="comment">// 代价就是会消耗更多的内存空间（空间换时间）</span></span><br><span class="line"><span class="type">LongAdder</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">LongAdder</span>();</span><br><span class="line">sum.increment();</span><br></pre></td></tr></table></figure></div>
-
-<p>高并发的场景下，乐观锁相比悲观锁来说，不存在锁竞争造成线程阻塞，也不会有死锁的问题，在性能上往往会更胜一筹。但是，如果冲突频繁发生（写占比非常多的情况），会频繁失败和重试，这样同样会非常影响性能，导致 CPU 飙升。</p>
-<p>不过，大量失败重试的问题也是可以解决的，像我们前面提到的 <code>LongAdder</code>以空间换时间的方式就解决了这个问题。</p>
-<p>理论上来说：</p>
-<ul>
-<li>悲观锁通常多用于写比较多的情况下（多写场景，竞争激烈），这样可以避免频繁失败和重试影响性能，悲观锁的开销是固定的。不过，如果乐观锁解决了频繁失败和重试这个问题的话（比如<code>LongAdder</code>），也是可以考虑使用乐观锁的，要视实际情况而定。</li>
-<li>乐观锁通常多于写比较少的情况下（多读场景，竞争较少），这样可以避免频繁加锁影响性能。不过，乐观锁主要针对的对象是单个共享变量（参考<code>java.util.concurrent.atomic</code>包下面的原子变量类）。</li>
-</ul>
-<h2 id="如何实现乐观锁？"><a href="#如何实现乐观锁？" class="headerlink" title="如何实现乐观锁？"></a>如何实现乐观锁？</h2><p>乐观锁一般会使用版本号机制或 CAS 算法实现，CAS 算法相对来说更多一些，这里需要格外注意。</p>
-<h3 id="版本号机制"><a href="#版本号机制" class="headerlink" title="版本号机制"></a>版本号机制</h3><p>一般是在数据表中加上一个数据版本号 <code>version</code> 字段，表示数据被修改的次数。当数据被修改时，<code>version</code> 值会加一。当线程 A 要更新数据值时，在读取数据的同时也会读取 <code>version</code> 值，在提交更新时，若刚才读取到的 version 值为当前数据库中的 <code>version</code> 值相等时才更新，否则重试更新操作，直到更新成功。</p>
-<p><strong>举一个简单的例子</strong>：假设数据库中帐户信息表中有一个 version 字段，当前值为 1 ；而当前帐户余额字段（ <code>balance</code> ）为 $100 。</p>
+                <h1 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h1><h2 id="什么是接口文档？"><a href="#什么是接口文档？" class="headerlink" title="什么是接口文档？"></a>什么是接口文档？</h2><p>前后端接口文档是用于描述前端应用程序和后端服务器之间通信的规范和约定的文档。在一个典型的前后端分离的应用程序中，前端应用程序和后端服务器通过接口进行数据交换和通信。</p>
+<p>接口文档通常包含以下内容：</p>
 <ol>
-<li>操作员 A 此时将其读出（ <code>version</code>&#x3D;1 ），并从其帐户余额中扣除 $50（ $100-$50 ）。</li>
-<li>在操作员 A 操作的过程中，操作员 B 也读入此用户信息（ <code>version</code>&#x3D;1 ），并从其帐户余额中扣除 $20 （ $100-$20 ）。</li>
-<li>操作员 A 完成了修改工作，将数据版本号（ <code>version</code>&#x3D;1 ），连同帐户扣除后余额（ <code>balance</code>&#x3D;$50 ），提交至数据库更新，此时由于提交数据版本等于数据库记录当前版本，数据被更新，数据库记录 <code>version</code> 更新为 2 。</li>
-<li>操作员 B 完成了操作，也将版本号（ <code>version</code>&#x3D;1 ）试图向数据库提交数据（ <code>balance</code>&#x3D;$80 ），但此时比对数据库记录版本时发现，操作员 B 提交的数据版本号为 1 ，数据库记录当前版本也为 2 ，不满足 “ 提交版本必须等于当前版本才能执行更新 “ 的乐观锁策略，因此，操作员 B 的提交被驳回。</li>
+<li><strong>接口列表</strong>：列出了前后端之间可用的所有接口，每个接口通常都有一个唯一的标识符和名称。</li>
+<li><strong>接口描述</strong>：对每个接口进行详细的描述，包括接口的功能、用途、输入参数、输出结果以及可能的错误情况等。</li>
+<li><strong>请求参数</strong>：列出了前端发送给后端的请求参数，包括参数名称、类型、是否必需以及可能的取值范围等。</li>
+<li><strong>响应结果</strong>：定义了后端返回给前端的响应结果的结构和内容，包括返回数据的格式、字段名称、数据类型以及可能的取值范围等。</li>
+<li><strong>错误处理</strong>：描述了可能出现的错误情况以及对应的错误码、错误信息和处理方式，以帮助前端应用程序正确处理和展示错误信息。</li>
+<li><strong>接口示例</strong>：提供一些示例请求和响应的数据，以帮助开发人员理解接口的使用方式和预期结果。</li>
 </ol>
-<p>这样就避免了操作员 B 用基于 <code>version</code>&#x3D;1 的旧数据修改的结果覆盖操作员 A 的操作结果的可能。</p>
-<h3 id="CAS-算法"><a href="#CAS-算法" class="headerlink" title="CAS 算法"></a>CAS 算法</h3><p>CAS 的全称是 <strong>Compare And Swap（比较与交换）</strong> ，用于实现乐观锁，被广泛应用于各大框架中。CAS 的思想很简单，就是用一个预期值和要更新的变量值进行比较，两值相等才会进行更新。</p>
-<p>CAS 是一个原子操作，底层依赖于一条 CPU 的原子指令。</p>
+<p>接口文档的编写和维护对于前后端开发团队的协作非常重要。它可以作为前后端开发人员之间的沟通工具，确保双方对接口的行为和数据格式有共同的理解，以便高效地进行开发和集成。常见的接口文档格式包括 Swagger（OpenAPI）、API Blueprint、Postman 等。</p>
+<h2 id="谁会使用接口文档？"><a href="#谁会使用接口文档？" class="headerlink" title="谁会使用接口文档？"></a>谁会使用接口文档？</h2><ol>
+<li><strong>前端开发人员</strong>：前端开发人员使用接口文档来了解后端接口的使用方式、输入参数和预期响应，以便正确地发起请求并处理返回结果。接口文档帮助他们理解接口的功能和约定，从而能够与后端进行协作开发。</li>
+<li><strong>后端开发人员</strong>：后端开发人员使用接口文档作为实现后端接口的指南。接口文档描述了前端期望的请求参数和响应结果，后端开发人员需要根据文档中的规范来设计和实现接口逻辑。</li>
+</ol>
+<h2 id="怎么做接口文档？"><a href="#怎么做接口文档？" class="headerlink" title="怎么做接口文档？"></a>怎么做接口文档？</h2><ol>
+<li><p>手写</p>
+</li>
+<li><p>自动化接口文档生成：自动根据项目代码生成完整的文档和在线调试网页。</p>
 <blockquote>
-<p><strong>原子操作</strong> 即最小不可拆分的操作，也就是说操作一旦开始，就不能被打断，直到操作完成。</p>
+<p>比如Swagger、Postman、apifox、apipost等</p>
 </blockquote>
-<p>CAS 涉及到三个操作数：</p>
+</li>
+</ol>
+<h1 id="后端项目整合Swagger-Knife4j"><a href="#后端项目整合Swagger-Knife4j" class="headerlink" title="后端项目整合Swagger + Knife4j"></a>后端项目整合Swagger + Knife4j</h1><blockquote>
+<p>由于 Knife4j本身集成了Swagger，为了方便可以直接集成knife4j</p>
+</blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://doc.xiaominfo.com/docs/quick-start" >https://doc.xiaominfo.com/docs/quick-start <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<blockquote>
+<p>OpenAPI2(Swagger)规范是Knife4j之前一直提供支持的版本，底层依赖框架为Springfox,此次在4.0版本开始</p>
+<p>Knife4j有了新的变化，主要有以下几点：</p>
 <ul>
-<li><strong>V</strong>：要更新的变量值(Var)</li>
-<li><strong>E</strong>：预期值(Expected)</li>
-<li><strong>N</strong>：拟写入的新值(New)</li>
+<li>Springfox版本选择的依然是<strong>2.10.5</strong>版本，而并非springfox最新3.0.0版本</li>
+<li>不支持以Springfox框架为基础的OpenAPI3规范,放弃Springfox项目的后续版本适配支持工作</li>
+<li>Spring Boot 版本建议 2.4.0~3.0.0之间</li>
 </ul>
-<p>当且仅当 V 的值等于 E 时，CAS 通过原子方式用新值 N 来更新 V 的值。如果不等，说明已经有其它线程更新了 V，则当前线程放弃更新。</p>
-<p><strong>举一个简单的例子</strong>：线程 A 要修改变量 i 的值为 6，i 原值为 1（V &#x3D; 1，E&#x3D;1，N&#x3D;6，假设不存在 ABA 问题）。</p>
+</blockquote>
 <ol>
-<li>i 与 1 进行比较，如果相等， 则说明没被其他线程修改，可以被设置为 6 。</li>
-<li>i 与 1 进行比较，如果不相等，则说明被其他线程修改，当前线程放弃更新，CAS 操作失败。</li>
+<li><p>在 <code>pom.xml</code> 文件中引入 knife4j 依赖</p>
+<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.xiaoymin<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>knife4j-openapi2-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>配置 <code>application.yml</code>文件</p>
+<div class="highlight-container" data-rel="Yml"><figure class="iseeu highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">knife4j:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">openapi:</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">Knife4j官方文档</span></span><br><span class="line">    <span class="attr">description:</span> <span class="string">&quot;`我是测试`,**你知道吗**</span></span><br><span class="line"><span class="string">    # aaa&quot;</span></span><br><span class="line">    <span class="attr">email:</span> <span class="string">xiaoymin@foxmail.com</span></span><br><span class="line">    <span class="attr">concat:</span> <span class="string">八一菜刀</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">https://docs.xiaominfo.com</span></span><br><span class="line">    <span class="attr">version:</span> <span class="string">v4.0</span></span><br><span class="line">    <span class="attr">license:</span> <span class="string">Apache</span> <span class="number">2.0</span></span><br><span class="line">    <span class="attr">license-url:</span> <span class="string">https://stackoverflow.com/</span></span><br><span class="line">    <span class="attr">terms-of-service-url:</span> <span class="string">https://stackoverflow.com/</span></span><br><span class="line">    <span class="attr">group:</span></span><br><span class="line">      <span class="attr">test1:</span></span><br><span class="line">        <span class="attr">group-name:</span> <span class="string">分组名称</span></span><br><span class="line">        <span class="attr">api-rule:</span> <span class="string">package</span></span><br><span class="line">        <span class="attr">api-rule-resources:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">com.knife4j.demo.new3</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>最后，访问Knife4j的文档地址：<code>http://ip:port/doc.html</code>即可查看文档</p>
+</li>
 </ol>
-<p>当多个线程同时使用 CAS 操作一个变量时，只有一个会胜出，并成功更新，其余均会失败，但失败的线程并不会被挂起，仅是被告知失败，并且允许再次尝试，当然也允许失败的线程放弃操作。</p>
-<p>Java 语言并没有直接实现 CAS，CAS 相关的实现是通过 C++ 内联汇编的形式实现的（JNI 调用）。因此， CAS 的具体实现和操作系统以及 CPU 都有关系。</p>
-<p><code>sun.misc</code>包下的<code>Unsafe</code>类提供了<code>compareAndSwapObject</code>、<code>compareAndSwapInt</code>、<code>compareAndSwapLong</code>方法来实现的对<code>Object</code>、<code>int</code>、<code>long</code>类型的 CAS 操作</p>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	*  CAS</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> o         包含要修改field的对象</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> offset    对象中某field的偏移量</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> expected  期望值</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> update    更新值</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@return</span>          true | false</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> <span class="type">boolean</span> <span class="title function_">compareAndSwapObject</span><span class="params">(Object o, <span class="type">long</span> offset,  Object expected, Object update)</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> <span class="type">boolean</span> <span class="title function_">compareAndSwapInt</span><span class="params">(Object o, <span class="type">long</span> offset, <span class="type">int</span> expected,<span class="type">int</span> update)</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> <span class="type">boolean</span> <span class="title function_">compareAndSwapLong</span><span class="params">(Object o, <span class="type">long</span> offset, <span class="type">long</span> expected, <span class="type">long</span> update)</span>;</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="乐观锁存在哪些问题？"><a href="#乐观锁存在哪些问题？" class="headerlink" title="乐观锁存在哪些问题？"></a>乐观锁存在哪些问题？</h2><p>ABA 问题是乐观锁最常见的问题。</p>
-<h3 id="ABA-问题"><a href="#ABA-问题" class="headerlink" title="ABA 问题"></a>ABA 问题</h3><p>如果一个变量 V 初次读取的时候是 A 值，并且在准备赋值的时候检查到它仍然是 A 值，那我们就能说明它的值没有被其他线程修改过了吗？很明显是不能的，因为在这段时间它的值可能被改为其他值，然后又改回 A，那 CAS 操作就会误认为它从来没有被修改过。这个问题被称为 CAS 操作的 <strong>“ABA”问题。</strong></p>
-<p>ABA 问题的解决思路是在变量前面追加上<strong>版本号或者时间戳</strong>。JDK 1.5 以后的 <code>AtomicStampedReference</code> 类就是用来解决 ABA 问题的，其中的 <code>compareAndSet()</code> 方法就是首先检查当前引用是否等于预期引用，并且当前标志是否等于预期标志，如果全部相等，则以原子方式将该引用和该标志的值设置为给定的更新值。</p>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">compareAndSet</span><span class="params">(V   expectedReference,</span></span><br><span class="line"><span class="params">                             V   newReference,</span></span><br><span class="line"><span class="params">                             <span class="type">int</span> expectedStamp,</span></span><br><span class="line"><span class="params">                             <span class="type">int</span> newStamp)</span> &#123;</span><br><span class="line">    Pair&lt;V&gt; current = pair;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">        expectedReference == current.reference &amp;&amp;</span><br><span class="line">        expectedStamp == current.stamp &amp;&amp;</span><br><span class="line">        ((newReference == current.reference &amp;&amp;</span><br><span class="line">          newStamp == current.stamp) ||</span><br><span class="line">         casPair(current, Pair.of(newReference, newStamp)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="循环时间长开销大"><a href="#循环时间长开销大" class="headerlink" title="循环时间长开销大"></a>循环时间长开销大</h3><p>CAS 经常会用到自旋操作来进行重试，也就是不成功就一直循环执行直到成功。如果长时间不成功，会给 CPU 带来非常大的执行开销。</p>
-<p>如果 JVM 能支持处理器提供的 pause 指令那么效率会有一定的提升，pause 指令有两个作用：</p>
-<ol>
-<li>可以延迟流水线执行指令，使 CPU 不会消耗过多的执行资源，延迟的时间取决于具体实现的版本，在一些处理器上延迟时间是零。</li>
-<li>可以避免在退出循环的时候因内存顺序冲而引起 CPU 流水线被清空，从而提高 CPU 的执行效率。</li>
-</ol>
-<h3 id="只能保证一个共享变量的原子操作"><a href="#只能保证一个共享变量的原子操作" class="headerlink" title="只能保证一个共享变量的原子操作"></a>只能保证一个共享变量的原子操作</h3><p>CAS 只对单个共享变量有效，当操作涉及跨多个共享变量时 CAS 无效。但是从 JDK 1.5 开始，提供了<code>AtomicReference</code>类来保证引用对象之间的原子性，你可以把多个变量放在一个对象里来进行 CAS 操作.所以我们可以使用锁或者利用</p>
-
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><h2 id="生产环境下隐藏接口文档"><a href="#生产环境下隐藏接口文档" class="headerlink" title="生产环境下隐藏接口文档"></a>生产环境下隐藏接口文档</h2><p>在生产环境下一定要隐藏接口文档，不能给别人访问到！</p>
+<p><strong>解决办法：</strong></p>
+<p>在生产环境的配置文件<code>application-prod.yml</code>文件中的 knife4j配置里，添加 production配置：</p>
+<div class="highlight-container" data-rel="Yml"><figure class="iseeu highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">knife4j:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">openapi:</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">Knife4j官方文档</span></span><br><span class="line">    <span class="attr">description:</span> <span class="string">&quot;`我是测试`,**你知道吗**</span></span><br><span class="line"><span class="string">    # aaa&quot;</span></span><br><span class="line">    <span class="attr">email:</span> <span class="string">xiaoymin@foxmail.com</span></span><br><span class="line">    <span class="attr">concat:</span> <span class="string">八一菜刀</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">https://docs.xiaominfo.com</span></span><br><span class="line">    <span class="attr">version:</span> <span class="string">v4.0</span></span><br><span class="line">    <span class="attr">license:</span> <span class="string">Apache</span> <span class="number">2.0</span></span><br><span class="line">    <span class="attr">license-url:</span> <span class="string">https://stackoverflow.com/</span></span><br><span class="line">    <span class="attr">terms-of-service-url:</span> <span class="string">https://stackoverflow.com/</span></span><br><span class="line">    <span class="attr">group:</span></span><br><span class="line">      <span class="attr">test1:</span></span><br><span class="line">        <span class="attr">group-name:</span> <span class="string">分组名称</span></span><br><span class="line">        <span class="attr">api-rule:</span> <span class="string">package</span></span><br><span class="line">        <span class="attr">api-rule-resources:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">com.knife4j.demo.new3</span></span><br><span class="line">  <span class="attr">production:</span> <span class="literal">true</span>   <span class="comment"># true之后生产环境启动后，就访问不了接口文档</span></span><br></pre></td></tr></table></figure></div>
             </div>
 
             
@@ -594,11 +581,15 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/%E9%94%81/">#锁</a>&nbsp;
+                            <a href="/tags/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/">#接口文档</a>&nbsp;
                         </li>
                     
                         <li class="tag-item">
-                            <a href="/tags/%E5%B9%B6%E5%8F%91/">#并发</a>&nbsp;
+                            <a href="/tags/Swagger/">#Swagger</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Knife4j/">#Knife4j</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -612,13 +603,13 @@
                         <div class="article-prev">
                             <a class="prev"
                             rel="prev"
-                            href="/2023/05/29/Redis%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"
+                            href="/2023/06/15/8.Redis%E5%AE%9E%E7%8E%B0%E5%85%B1%E4%BA%ABSession/"
                             >
                                 <span class="left arrow-icon flex-center">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </span>
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Redis在项目中的应用</span>
+                                    <span class="post-nav-title-item">Redis实现共享Session</span>
                                     <span class="post-nav-item">上一篇</span>
                                 </span>
                             </a>
@@ -628,10 +619,10 @@
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2023/05/27/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%EF%BC%9F/"
+                            href="/2023/05/29/6.Redis%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">如何实现分布式锁？</span>
+                                    <span class="post-nav-title-item">Redis在项目中的应用</span>
                                     <span class="post-nav-item">下一篇</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -696,8 +687,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">乐观锁和悲观锁</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%82%B2%E8%A7%82%E9%94%81%EF%BC%9F"><span class="nav-text">什么是悲观锁？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%B9%90%E8%A7%82%E9%94%81%EF%BC%9F"><span class="nav-text">什么是乐观锁？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B9%90%E8%A7%82%E9%94%81%EF%BC%9F"><span class="nav-text">如何实现乐观锁？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E5%8F%B7%E6%9C%BA%E5%88%B6"><span class="nav-text">版本号机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAS-%E7%AE%97%E6%B3%95"><span class="nav-text">CAS 算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%90%E8%A7%82%E9%94%81%E5%AD%98%E5%9C%A8%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">乐观锁存在哪些问题？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ABA-%E9%97%AE%E9%A2%98"><span class="nav-text">ABA 问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E6%97%B6%E9%97%B4%E9%95%BF%E5%BC%80%E9%94%80%E5%A4%A7"><span class="nav-text">循环时间长开销大</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AA%E8%83%BD%E4%BF%9D%E8%AF%81%E4%B8%80%E4%B8%AA%E5%85%B1%E4%BA%AB%E5%8F%98%E9%87%8F%E7%9A%84%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="nav-text">只能保证一个共享变量的原子操作</span></a></li></ol></li></ol></li></ol>
+        <div class="page-title">后端项目整合Swagger+Knife4j接口文档</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3"><span class="nav-text">接口文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%EF%BC%9F"><span class="nav-text">什么是接口文档？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%81%E4%BC%9A%E4%BD%BF%E7%94%A8%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%EF%BC%9F"><span class="nav-text">谁会使用接口文档？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E5%81%9A%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%EF%BC%9F"><span class="nav-text">怎么做接口文档？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88Swagger-Knife4j"><span class="nav-text">后端项目整合Swagger + Knife4j</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%9A%90%E8%97%8F%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3"><span class="nav-text">生产环境下隐藏接口文档</span></a></li></ol></li></ol>
 
     </div>
 </div>

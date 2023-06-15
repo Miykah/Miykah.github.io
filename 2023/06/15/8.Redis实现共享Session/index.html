@@ -17,25 +17,27 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://miykah.top/2023/06/14/后端项目整合swagger + knife4j接口文档/"/>
+    <link rel="canonical" href="https://miykah.top/2023/06/15/8.redis实现共享session/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="接口文档什么是接口文档？前后端接口文档是用于描述前端应用程序和后端服务器之间通信的规范和约定的文档。在一个典型的前后端分离的应用程序中，前端应用程序和后端服务器通过接口进行数据交换和通信。 接口文档通常包含以下内容：  接口列表：列出了前后端之间可用的所有接口，每个接口通常都有一个唯一的标识符和名称。 接口描述：对每个接口进行详细的描述，包括接口的功能、用途、输入参数、输出结果以及可能的错误情况等">
+        <meta name="description" content="基于Session实现登录存在的问题在集群模式下，基于 Session 实现的登录就会出现问题。假设用户第一次登录的时候负载均衡到了服务器A，在服务器A进行了登录，登录信息也保存在了服务器A。当用户第二次访问的时候，负载均衡到了服务器B，此时服务器B的session中是没有用户的登录信息的，所以用户必须进行重新登录。这样会给用户体验带来很大影响。 早期解决方案：session拷贝，就是说虽然每个t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="后端项目整合Swagger+Knife4j接口文档">
-<meta property="og:url" content="https://miykah.top/2023/06/14/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88Swagger%20+%20Knife4j%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:title" content="Redis实现共享Session">
+<meta property="og:url" content="https://miykah.top/2023/06/15/8.Redis%E5%AE%9E%E7%8E%B0%E5%85%B1%E4%BA%ABSession/index.html">
 <meta property="og:site_name" content="Miykah&#39;s Zone">
-<meta property="og:description" content="接口文档什么是接口文档？前后端接口文档是用于描述前端应用程序和后端服务器之间通信的规范和约定的文档。在一个典型的前后端分离的应用程序中，前端应用程序和后端服务器通过接口进行数据交换和通信。 接口文档通常包含以下内容：  接口列表：列出了前后端之间可用的所有接口，每个接口通常都有一个唯一的标识符和名称。 接口描述：对每个接口进行详细的描述，包括接口的功能、用途、输入参数、输出结果以及可能的错误情况等">
+<meta property="og:description" content="基于Session实现登录存在的问题在集群模式下，基于 Session 实现的登录就会出现问题。假设用户第一次登录的时候负载均衡到了服务器A，在服务器A进行了登录，登录信息也保存在了服务器A。当用户第二次访问的时候，负载均衡到了服务器B，此时服务器B的session中是没有用户的登录信息的，所以用户必须进行重新登录。这样会给用户体验带来很大影响。 早期解决方案：session拷贝，就是说虽然每个t">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-06-14T07:56:00.000Z">
-<meta property="article:modified_time" content="2023-06-15T12:17:18.557Z">
+<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202306152015731.png">
+<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202306152015466.png">
+<meta property="article:published_time" content="2023-06-15T12:17:00.000Z">
+<meta property="article:modified_time" content="2023-06-15T12:20:40.208Z">
 <meta property="article:author" content="Miykah">
-<meta property="article:tag" content="接口文档">
-<meta property="article:tag" content="Swagger">
-<meta property="article:tag" content="Knife4j">
+<meta property="article:tag" content="Redis">
+<meta property="article:tag" content="Session">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202306152015731.png">
     
     
     <!--- Icon Part-->
@@ -47,7 +49,7 @@
     
     <title>
         
-            后端项目整合Swagger+Knife4j接口文档 -
+            Redis实现共享Session -
         
         Miykah&#39;s Zone
     </title>
@@ -430,7 +432,7 @@
             
             
                 <div class="article-title">
-                    <h1 class="article-title-regular">后端项目整合Swagger+Knife4j接口文档</h1>
+                    <h1 class="article-title-regular">Redis实现共享Session</h1>
                 </div>
             
                 
@@ -452,15 +454,15 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2023-06-14 15:56</span>
-        <span class="mobile">2023-06-14 15:56</span>
+        <span class="desktop">2023-06-15 20:17</span>
+        <span class="mobile">2023-06-15 20:17</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-06-15 20:17:18</span>
-            <span class="mobile">2023-06-15 20:17</span>
+            <span class="desktop">2023-06-15 20:20:40</span>
+            <span class="mobile">2023-06-15 20:20</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -471,7 +473,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>&nbsp;
+                        <a href="/categories/Java/">Java</a>&nbsp;
                     </li>
                 
             </ul>
@@ -483,15 +485,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/">接口文档</a>&nbsp;
+                        <a href="/tags/Redis/">Redis</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/Swagger/">Swagger</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/Knife4j/">Knife4j</a>&nbsp;
+                        | <a href="/tags/Session/">Session</a>&nbsp;
                     </li>
                 
             </ul>
@@ -501,12 +499,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.1k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>563 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>4 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 分钟</span>
         </span>
     
     
@@ -522,57 +520,42 @@
             
 
             <div class="article-content markdown-body">
-                <h1 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h1><h2 id="什么是接口文档？"><a href="#什么是接口文档？" class="headerlink" title="什么是接口文档？"></a>什么是接口文档？</h2><p>前后端接口文档是用于描述前端应用程序和后端服务器之间通信的规范和约定的文档。在一个典型的前后端分离的应用程序中，前端应用程序和后端服务器通过接口进行数据交换和通信。</p>
-<p>接口文档通常包含以下内容：</p>
-<ol>
-<li><strong>接口列表</strong>：列出了前后端之间可用的所有接口，每个接口通常都有一个唯一的标识符和名称。</li>
-<li><strong>接口描述</strong>：对每个接口进行详细的描述，包括接口的功能、用途、输入参数、输出结果以及可能的错误情况等。</li>
-<li><strong>请求参数</strong>：列出了前端发送给后端的请求参数，包括参数名称、类型、是否必需以及可能的取值范围等。</li>
-<li><strong>响应结果</strong>：定义了后端返回给前端的响应结果的结构和内容，包括返回数据的格式、字段名称、数据类型以及可能的取值范围等。</li>
-<li><strong>错误处理</strong>：描述了可能出现的错误情况以及对应的错误码、错误信息和处理方式，以帮助前端应用程序正确处理和展示错误信息。</li>
-<li><strong>接口示例</strong>：提供一些示例请求和响应的数据，以帮助开发人员理解接口的使用方式和预期结果。</li>
-</ol>
-<p>接口文档的编写和维护对于前后端开发团队的协作非常重要。它可以作为前后端开发人员之间的沟通工具，确保双方对接口的行为和数据格式有共同的理解，以便高效地进行开发和集成。常见的接口文档格式包括 Swagger（OpenAPI）、API Blueprint、Postman 等。</p>
-<h2 id="谁会使用接口文档？"><a href="#谁会使用接口文档？" class="headerlink" title="谁会使用接口文档？"></a>谁会使用接口文档？</h2><ol>
-<li><strong>前端开发人员</strong>：前端开发人员使用接口文档来了解后端接口的使用方式、输入参数和预期响应，以便正确地发起请求并处理返回结果。接口文档帮助他们理解接口的功能和约定，从而能够与后端进行协作开发。</li>
-<li><strong>后端开发人员</strong>：后端开发人员使用接口文档作为实现后端接口的指南。接口文档描述了前端期望的请求参数和响应结果，后端开发人员需要根据文档中的规范来设计和实现接口逻辑。</li>
-</ol>
-<h2 id="怎么做接口文档？"><a href="#怎么做接口文档？" class="headerlink" title="怎么做接口文档？"></a>怎么做接口文档？</h2><ol>
-<li><p>手写</p>
-</li>
-<li><p>自动化接口文档生成：自动根据项目代码生成完整的文档和在线调试网页。</p>
+                <h1 id="基于Session实现登录存在的问题"><a href="#基于Session实现登录存在的问题" class="headerlink" title="基于Session实现登录存在的问题"></a>基于Session实现登录存在的问题</h1><p>在集群模式下，基于 Session 实现的登录就会出现问题。假设用户第一次登录的时候负载均衡到了服务器A，在服务器A进行了登录，登录信息也保存在了服务器A。当用户第二次访问的时候，负载均衡到了服务器B，此时服务器B的session中是没有用户的登录信息的，所以用户必须进行重新登录。这样会给用户体验带来很大影响。</p>
+<p><strong>早期解决方案</strong>：session拷贝，就是说虽然每个tomcat上都有不同的session，但是每当任意一台服务器的session修改时，都会同步给其他的Tomcat服务器的session，这样的话，就可以实现session的共享了。</p>
+<p>但这种方案会有问题：（1）每台服务器中都有完整的一份session数据，服务器压力过大。（2）session拷贝数据时，可能会出现延迟。</p>
+<p>所以咱们后来采用的方案都是基于Redis来完成，我们把session换成redis，redis数据本身就是共享的，就可以避免session共享的问题了。</p>
 <blockquote>
-<p>比如Swagger、Postman、apifox、apipost等</p>
+<p>可以自己使用 StringRedisTemplate 实现登录，将用户信息存入redis，前端返回 token。</p>
+<p>但为了方便，可以直接集成 spring-session-data-redis。会自动将原本存到 session中的内容存到redis，实现共享session</p>
 </blockquote>
+<h1 id="Spring-Boot-整合-Redis-实现共享Session"><a href="#Spring-Boot-整合-Redis-实现共享Session" class="headerlink" title="Spring Boot 整合 Redis 实现共享Session"></a>Spring Boot 整合 Redis 实现共享Session</h1><h2 id="整合-spring-boot-starter-data-redis"><a href="#整合-spring-boot-starter-data-redis" class="headerlink" title="整合 spring-boot-starter-data-redis"></a>整合 spring-boot-starter-data-redis</h2><ol>
+<li><p>引入依赖</p>
+<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.11<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
 </li>
+<li><p>修改配置文件</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">    redis:</span><br><span class="line">      password: xxxxxx</span><br><span class="line">      database: 0</span><br><span class="line">      port: 6379</span><br><span class="line">      host: xxx.xxx.xxx.xxx</span><br></pre></td></tr></table></figure></div></li>
 </ol>
-<h1 id="后端项目整合Swagger-Knife4j"><a href="#后端项目整合Swagger-Knife4j" class="headerlink" title="后端项目整合Swagger + Knife4j"></a>后端项目整合Swagger + Knife4j</h1><blockquote>
-<p>由于 Knife4j本身集成了Swagger，为了方便可以直接集成knife4j</p>
-</blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://doc.xiaominfo.com/docs/quick-start" >https://doc.xiaominfo.com/docs/quick-start <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<blockquote>
-<p>OpenAPI2(Swagger)规范是Knife4j之前一直提供支持的版本，底层依赖框架为Springfox,此次在4.0版本开始</p>
-<p>Knife4j有了新的变化，主要有以下几点：</p>
-<ul>
-<li>Springfox版本选择的依然是<strong>2.10.5</strong>版本，而并非springfox最新3.0.0版本</li>
-<li>不支持以Springfox框架为基础的OpenAPI3规范,放弃Springfox项目的后续版本适配支持工作</li>
-<li>Spring Boot 版本建议 2.4.0~3.0.0之间</li>
-</ul>
-</blockquote>
-<ol>
-<li><p>在 <code>pom.xml</code> 文件中引入 knife4j 依赖</p>
-<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.xiaoymin<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>knife4j-openapi2-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="整合-spring-session-data-redis"><a href="#整合-spring-session-data-redis" class="headerlink" title="整合 spring-session-data-redis"></a>整合 spring-session-data-redis</h2><ol>
+<li><p>引入依赖</p>
+<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.session/spring-session-data-redis --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.session<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-session-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
 </li>
-<li><p>配置 <code>application.yml</code>文件</p>
-<div class="highlight-container" data-rel="Yml"><figure class="iseeu highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">knife4j:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">openapi:</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">Knife4j官方文档</span></span><br><span class="line">    <span class="attr">description:</span> <span class="string">&quot;`我是测试`,**你知道吗**</span></span><br><span class="line"><span class="string">    # aaa&quot;</span></span><br><span class="line">    <span class="attr">email:</span> <span class="string">xiaoymin@foxmail.com</span></span><br><span class="line">    <span class="attr">concat:</span> <span class="string">八一菜刀</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">https://docs.xiaominfo.com</span></span><br><span class="line">    <span class="attr">version:</span> <span class="string">v4.0</span></span><br><span class="line">    <span class="attr">license:</span> <span class="string">Apache</span> <span class="number">2.0</span></span><br><span class="line">    <span class="attr">license-url:</span> <span class="string">https://stackoverflow.com/</span></span><br><span class="line">    <span class="attr">terms-of-service-url:</span> <span class="string">https://stackoverflow.com/</span></span><br><span class="line">    <span class="attr">group:</span></span><br><span class="line">      <span class="attr">test1:</span></span><br><span class="line">        <span class="attr">group-name:</span> <span class="string">分组名称</span></span><br><span class="line">        <span class="attr">api-rule:</span> <span class="string">package</span></span><br><span class="line">        <span class="attr">api-rule-resources:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">com.knife4j.demo.new3</span></span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>最后，访问Knife4j的文档地址：<code>http://ip:port/doc.html</code>即可查看文档</p>
-</li>
+<li><p>修改配置文件</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">    session:</span><br><span class="line">      timeout: 86400 # 秒</span><br><span class="line">      store-type: redis # 将 session 保存到 redis</span><br></pre></td></tr></table></figure></div></li>
 </ol>
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><h2 id="生产环境下隐藏接口文档"><a href="#生产环境下隐藏接口文档" class="headerlink" title="生产环境下隐藏接口文档"></a>生产环境下隐藏接口文档</h2><p>在生产环境下一定要隐藏接口文档，不能给别人访问到！</p>
-<p><strong>解决办法：</strong></p>
-<p>在生产环境的配置文件<code>application-prod.yml</code>文件中的 knife4j配置里，添加 production配置：</p>
-<div class="highlight-container" data-rel="Yml"><figure class="iseeu highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">knife4j:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">openapi:</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">Knife4j官方文档</span></span><br><span class="line">    <span class="attr">description:</span> <span class="string">&quot;`我是测试`,**你知道吗**</span></span><br><span class="line"><span class="string">    # aaa&quot;</span></span><br><span class="line">    <span class="attr">email:</span> <span class="string">xiaoymin@foxmail.com</span></span><br><span class="line">    <span class="attr">concat:</span> <span class="string">八一菜刀</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">https://docs.xiaominfo.com</span></span><br><span class="line">    <span class="attr">version:</span> <span class="string">v4.0</span></span><br><span class="line">    <span class="attr">license:</span> <span class="string">Apache</span> <span class="number">2.0</span></span><br><span class="line">    <span class="attr">license-url:</span> <span class="string">https://stackoverflow.com/</span></span><br><span class="line">    <span class="attr">terms-of-service-url:</span> <span class="string">https://stackoverflow.com/</span></span><br><span class="line">    <span class="attr">group:</span></span><br><span class="line">      <span class="attr">test1:</span></span><br><span class="line">        <span class="attr">group-name:</span> <span class="string">分组名称</span></span><br><span class="line">        <span class="attr">api-rule:</span> <span class="string">package</span></span><br><span class="line">        <span class="attr">api-rule-resources:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">com.knife4j.demo.new3</span></span><br><span class="line">  <span class="attr">production:</span> <span class="literal">true</span>   <span class="comment"># true之后生产环境启动后，就访问不了接口文档</span></span><br></pre></td></tr></table></figure></div>
+<p>此时用户登录后的 session 就会保存在 redis 中，集群环境下的登录问题就可以得到解决。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202306152015731.png"
+                      alt="image-20230615201541406"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202306152015466.png"
+                      alt="image-20230615201551447"
+                ></p>
+
             </div>
 
             
@@ -581,15 +564,11 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/">#接口文档</a>&nbsp;
+                            <a href="/tags/Redis/">#Redis</a>&nbsp;
                         </li>
                     
                         <li class="tag-item">
-                            <a href="/tags/Swagger/">#Swagger</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/Knife4j/">#Knife4j</a>&nbsp;
+                            <a href="/tags/Session/">#Session</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -600,29 +579,14 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2023/06/15/Redis%E5%AE%9E%E7%8E%B0%E5%85%B1%E4%BA%ABSession/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">Redis实现共享Session</span>
-                                    <span class="post-nav-item">上一篇</span>
-                                </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2023/05/29/Redis%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"
+                            href="/2023/06/14/7.%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88Swagger%20+%20Knife4j%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Redis在项目中的应用</span>
+                                    <span class="post-nav-title-item">后端项目整合Swagger+Knife4j接口文档</span>
                                     <span class="post-nav-item">下一篇</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -687,8 +651,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">后端项目整合Swagger+Knife4j接口文档</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3"><span class="nav-text">接口文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%EF%BC%9F"><span class="nav-text">什么是接口文档？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%81%E4%BC%9A%E4%BD%BF%E7%94%A8%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%EF%BC%9F"><span class="nav-text">谁会使用接口文档？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E5%81%9A%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%EF%BC%9F"><span class="nav-text">怎么做接口文档？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88Swagger-Knife4j"><span class="nav-text">后端项目整合Swagger + Knife4j</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%9A%90%E8%97%8F%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3"><span class="nav-text">生产环境下隐藏接口文档</span></a></li></ol></li></ol>
+        <div class="page-title">Redis实现共享Session</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8ESession%E5%AE%9E%E7%8E%B0%E7%99%BB%E5%BD%95%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">基于Session实现登录存在的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Boot-%E6%95%B4%E5%90%88-Redis-%E5%AE%9E%E7%8E%B0%E5%85%B1%E4%BA%ABSession"><span class="nav-text">Spring Boot 整合 Redis 实现共享Session</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E5%90%88-spring-boot-starter-data-redis"><span class="nav-text">整合 spring-boot-starter-data-redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E5%90%88-spring-session-data-redis"><span class="nav-text">整合 spring-session-data-redis</span></a></li></ol></li></ol>
 
     </div>
 </div>

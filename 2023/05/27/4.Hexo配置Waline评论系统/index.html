@@ -17,27 +17,34 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://miykah.top/2023/06/15/redis实现共享session/"/>
+    <link rel="canonical" href="https://miykah.top/2023/05/27/4.hexo配置waline评论系统/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="基于Session实现登录存在的问题在集群模式下，基于 Session 实现的登录就会出现问题。假设用户第一次登录的时候负载均衡到了服务器A，在服务器A进行了登录，登录信息也保存在了服务器A。当用户第二次访问的时候，负载均衡到了服务器B，此时服务器B的session中是没有用户的登录信息的，所以用户必须进行重新登录。这样会给用户体验带来很大影响。 早期解决方案：session拷贝，就是说虽然每个t">
+        <meta name="description" content="评论系统选择Waline 是一款简洁、安全的评论系统。 具有管理评论和Reaction的功能。如图：   Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数据库和 Vercel 服务端https:&#x2F;&#x2F;waline.js.org&#x2F;guide&#x2F;get-started&#x2F;  修改主题配置文件 _config.yml 启用评论，并使用 waline 评论系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis实现共享Session">
-<meta property="og:url" content="https://miykah.top/2023/06/15/Redis%E5%AE%9E%E7%8E%B0%E5%85%B1%E4%BA%ABSession/index.html">
+<meta property="og:title" content="Hexo配置Waline评论系统">
+<meta property="og:url" content="https://miykah.top/2023/05/27/4.Hexo%E9%85%8D%E7%BD%AEWaline%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="Miykah&#39;s Zone">
-<meta property="og:description" content="基于Session实现登录存在的问题在集群模式下，基于 Session 实现的登录就会出现问题。假设用户第一次登录的时候负载均衡到了服务器A，在服务器A进行了登录，登录信息也保存在了服务器A。当用户第二次访问的时候，负载均衡到了服务器B，此时服务器B的session中是没有用户的登录信息的，所以用户必须进行重新登录。这样会给用户体验带来很大影响。 早期解决方案：session拷贝，就是说虽然每个t">
+<meta property="og:description" content="评论系统选择Waline 是一款简洁、安全的评论系统。 具有管理评论和Reaction的功能。如图：   Hexo-Keep主题配置Waline评论系统根据 Waline 文档部署 LeanCloud 数据库和 Vercel 服务端https:&#x2F;&#x2F;waline.js.org&#x2F;guide&#x2F;get-started&#x2F;  修改主题配置文件 _config.yml 启用评论，并使用 waline 评论系统">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202306152015731.png">
-<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202306152015466.png">
-<meta property="article:published_time" content="2023-06-15T12:17:00.000Z">
-<meta property="article:modified_time" content="2023-06-15T12:17:47.063Z">
+<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203229.png">
+<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203220.png">
+<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203226.png">
+<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271212151.png">
+<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203209.png">
+<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203203.png">
+<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203402.png">
+<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203436.png">
+<meta property="og:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203465.png">
+<meta property="article:published_time" content="2023-05-27T03:33:08.000Z">
+<meta property="article:modified_time" content="2023-05-28T07:36:55.585Z">
 <meta property="article:author" content="Miykah">
-<meta property="article:tag" content="Redis">
-<meta property="article:tag" content="Session">
+<meta property="article:tag" content="waline">
+<meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202306152015731.png">
+<meta name="twitter:image" content="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203229.png">
     
     
     <!--- Icon Part-->
@@ -49,7 +56,7 @@
     
     <title>
         
-            Redis实现共享Session -
+            Hexo配置Waline评论系统 -
         
         Miykah&#39;s Zone
     </title>
@@ -432,7 +439,7 @@
             
             
                 <div class="article-title">
-                    <h1 class="article-title-regular">Redis实现共享Session</h1>
+                    <h1 class="article-title-regular">Hexo配置Waline评论系统</h1>
                 </div>
             
                 
@@ -454,15 +461,15 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2023-06-15 20:17</span>
-        <span class="mobile">2023-06-15 20:17</span>
+        <span class="desktop">2023-05-27 11:33:08</span>
+        <span class="mobile">2023-05-27 11:33</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-06-15 20:17:47</span>
-            <span class="mobile">2023-06-15 20:17</span>
+            <span class="desktop">2023-05-28 15:36:55</span>
+            <span class="mobile">2023-05-28 15:36</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -473,7 +480,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Java/">Java</a>&nbsp;
+                        <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>&nbsp;
                     </li>
                 
             </ul>
@@ -485,11 +492,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Redis/">Redis</a>&nbsp;
+                        <a href="/tags/waline/">waline</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/Session/">Session</a>&nbsp;
+                        | <a href="/tags/Hexo/">Hexo</a>&nbsp;
                     </li>
                 
             </ul>
@@ -499,7 +506,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>564 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>511 字</span>
         </span>
     
     
@@ -520,41 +527,106 @@
             
 
             <div class="article-content markdown-body">
-                <h1 id="基于Session实现登录存在的问题"><a href="#基于Session实现登录存在的问题" class="headerlink" title="基于Session实现登录存在的问题"></a>基于Session实现登录存在的问题</h1><p>在集群模式下，基于 Session 实现的登录就会出现问题。假设用户第一次登录的时候负载均衡到了服务器A，在服务器A进行了登录，登录信息也保存在了服务器A。当用户第二次访问的时候，负载均衡到了服务器B，此时服务器B的session中是没有用户的登录信息的，所以用户必须进行重新登录。这样会给用户体验带来很大影响。</p>
-<p><strong>早期解决方案</strong>：session拷贝，就是说虽然每个tomcat上都有不同的session，但是每当任意一台服务器的session修改时，都会同步给其他的Tomcat服务器的session，这样的话，就可以实现session的共享了。</p>
-<p>但这种方案会有问题：（1）每台服务器中都有完整的一份session数据，服务器压力过大。（2）session拷贝数据时，可能会出现延迟。</p>
-<p>所以咱们后来采用的方案都是基于Redis来完成，我们把session换成redis，redis数据本身就是共享的，就可以避免session共享的问题了。</p>
-<blockquote>
-<p>可以自己使用 StringRedisTemplate 实现登录，将用户信息存入redis，前端返回 token。</p>
-<p>但为了方便，可以直接集成 spring-session-data-redis。会自动将原本存到 session中的内容存到redis，实现共享session</p>
+                <h1 id="评论系统选择"><a href="#评论系统选择" class="headerlink" title="评论系统选择"></a>评论系统选择</h1><p>Waline 是一款简洁、安全的评论系统。</p>
+<p>具有管理评论和Reaction的功能。如图：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203229.png"
+                      alt="image-20230527113844370"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203220.png"
+                      alt="image-20230527113851143"
+                ></p>
+<h1 id="Hexo-Keep主题配置Waline评论系统"><a href="#Hexo-Keep主题配置Waline评论系统" class="headerlink" title="Hexo-Keep主题配置Waline评论系统"></a>Hexo-Keep主题配置Waline评论系统</h1><h2 id="根据-Waline-文档部署-LeanCloud-数据库和-Vercel-服务端"><a href="#根据-Waline-文档部署-LeanCloud-数据库和-Vercel-服务端" class="headerlink" title="根据 Waline 文档部署 LeanCloud 数据库和 Vercel 服务端"></a>根据 Waline 文档部署 LeanCloud 数据库和 Vercel 服务端</h2><p><a class="link"   target="_blank" rel="noopener" href="https://waline.js.org/guide/get-started/" >https://waline.js.org/guide/get-started/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h2 id="修改主题配置文件-config-yml"><a href="#修改主题配置文件-config-yml" class="headerlink" title="修改主题配置文件 _config.yml"></a>修改主题配置文件 _config.yml</h2><ol>
+<li><p>启用评论，并使用 waline 评论系统</p>
+<div class="highlight-container" data-rel="Yml"><figure class="iseeu highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">comment:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>   <span class="comment"># Option values: true | false</span></span><br><span class="line">  <span class="attr">use:</span> <span class="string">waline</span>     <span class="comment"># Option values: valine | gitalk | twikoo | waline</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>配置 waline</p>
+<p><code>server_url</code> 是成功部署 Waline 评论系统的服务端地址。</p>
+<p><code>reaction</code> 设置开启文章反应，可选值：<code>true</code> 或 <code>false</code>。</p>
+<p><code>version</code> 设置 Waline 评论系统版本，Keep 主题内置使用 Waline <code>v2</code>，你可以自行更改。</p>
+<div class="highlight-container" data-rel="Yml"><figure class="iseeu highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">server_url:</span> <span class="string">https://comment-waline-server-qk96wik8t-miykah.vercel.app/</span> <span class="comment"># Server URL</span></span><br><span class="line">  <span class="attr">reaction:</span> <span class="literal">true</span> <span class="comment"># Article reactions, Option values: true | false</span></span><br><span class="line">  <span class="attr">version:</span> <span class="number">2</span>      <span class="comment"># Waline version, default use v2</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>评论系统启用成功</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203226.png"
+                      alt="image-20230527114452740"
+                ></p>
+</li>
+</ol>
+<h1 id="评论系统与管理系统"><a href="#评论系统与管理系统" class="headerlink" title="评论系统与管理系统"></a>评论系统与管理系统</h1><blockquote>
+<p>评论系统：example.yourdomain.com      我的：<a class="link"   target="_blank" rel="noopener" href="https://comment.miykah.top/" >https://comment.miykah.top/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>评论管理：example.yourdomain.com&#x2F;ui   我的：<a class="link"   target="_blank" rel="noopener" href="https://comment.miykah.top/ui" >https://comment.miykah.top/ui <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 </blockquote>
-<h1 id="Spring-Boot-整合-Redis-实现共享Session"><a href="#Spring-Boot-整合-Redis-实现共享Session" class="headerlink" title="Spring Boot 整合 Redis 实现共享Session"></a>Spring Boot 整合 Redis 实现共享Session</h1><h2 id="整合-spring-boot-starter-data-redis"><a href="#整合-spring-boot-starter-data-redis" class="headerlink" title="整合 spring-boot-starter-data-redis"></a>整合 spring-boot-starter-data-redis</h2><ol>
-<li><p>引入依赖</p>
-<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.11<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>修改配置文件</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">    redis:</span><br><span class="line">      password: xxxxxx</span><br><span class="line">      database: 0</span><br><span class="line">      port: 6379</span><br><span class="line">      host: xxx.xxx.xxx.xxx</span><br></pre></td></tr></table></figure></div></li>
-</ol>
-<h2 id="整合-spring-session-data-redis"><a href="#整合-spring-session-data-redis" class="headerlink" title="整合 spring-session-data-redis"></a>整合 spring-session-data-redis</h2><ol>
-<li><p>引入依赖</p>
-<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.session/spring-session-data-redis --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.session<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-session-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>修改配置文件</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">    session:</span><br><span class="line">      timeout: 86400 # 分钟</span><br><span class="line">      store-type: redis # 将 session 保存到 redis</span><br></pre></td></tr></table></figure></div></li>
-</ol>
-<p>此时用户登录后的 session 就会保存在 redis 中，集群环境下的登录问题就可以得到解决。</p>
+<p>评论管理系统可以进行评论管理以及用户管理：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202306152015731.png"
-                      alt="image-20230615201541406"
+                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271212151.png"
+                      alt="image-202305271212151"
                 ></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202306152015466.png"
-                      alt="image-20230615201551447"
+                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203209.png"
+                      alt="image-20230527120150930"
                 ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203203.png"
+                      alt="image-20230527120159505"
+                ></p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="只有在挂了梯子之后才能流畅访问"><a href="#只有在挂了梯子之后才能流畅访问" class="headerlink" title="只有在挂了梯子之后才能流畅访问"></a>只有在挂了梯子之后才能流畅访问</h2><blockquote>
+<p>不连接梯子的情况下， 博客的评论一直加载不出来，百度了一下，发现是 vercel.app 的域名问题。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/Panzer_Jack/article/details/127418379" >https://blog.csdn.net/Panzer_Jack/article/details/127418379 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+</blockquote>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><blockquote>
+<p>参考：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/Panzer_Jack/article/details/127418379" >https://blog.csdn.net/Panzer_Jack/article/details/127418379 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://waline.js.org/guide/get-started/#%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D-%E5%8F%AF%E9%80%89" >https://waline.js.org/guide/get-started/#%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D-%E5%8F%AF%E9%80%89 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+</blockquote>
+<ol>
+<li><p>首先需要有一个域名，比如我有一个 <code>miykah.top</code> 域名</p>
+</li>
+<li><p>域名解析添加记录：取一个二级域名为 <code>comment</code> ，记录值为 <code>cname.vercel-dns.com</code> </p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203402.png"
+                      alt="image-20230527114655250"
+                ></p>
+</li>
+<li><p>在vercel部署的服务端中绑定域名 <code>comment.miykah.top</code></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203436.png"
+                      alt="image-20230527114805551"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miykah-imagebed.oss-cn-chengdu.aliyuncs.com/img/202305271203465.png"
+                      alt="image-20230527114832215"
+                ></p>
+</li>
+<li><p>修改主题配置文件 _config.yml</p>
+<div class="highlight-container" data-rel="Yml"><figure class="iseeu highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">server_url:</span> <span class="string">https://comment.miykah.top/</span> <span class="comment"># 改为绑定的评论系统新域名</span></span><br><span class="line">  <span class="attr">reaction:</span> <span class="literal">true</span> <span class="comment"># Article reactions, Option values: true | false</span></span><br><span class="line">  <span class="attr">version:</span> <span class="number">2</span>      <span class="comment"># Waline version, default use v2</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>问题解决！不挂梯子也能加载出评论！</p>
+</li>
+</ol>
+<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h2 id="配置邮件通知"><a href="#配置邮件通知" class="headerlink" title="配置邮件通知"></a>配置邮件通知</h2><p>参考：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://waline.js.org/guide/features/notification.html#%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5" >https://waline.js.org/guide/features/notification.html#%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://oragekk.me/blog/waline-mail.html" >https://oragekk.me/blog/waline-mail.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 
             </div>
 
@@ -564,11 +636,11 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/Redis/">#Redis</a>&nbsp;
+                            <a href="/tags/waline/">#waline</a>&nbsp;
                         </li>
                     
                         <li class="tag-item">
-                            <a href="/tags/Session/">#Session</a>&nbsp;
+                            <a href="/tags/Hexo/">#Hexo</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -579,14 +651,29 @@
             
                 <div class="article-nav">
                     
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/05/27/3.%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%EF%BC%9F/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">如何实现分布式锁？</span>
+                                    <span class="post-nav-item">上一篇</span>
+                                </span>
+                            </a>
+                        </div>
+                    
                     
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2023/06/14/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88Swagger%20+%20Knife4j%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/"
+                            href="/2023/05/26/2.%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%8E%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">后端项目整合Swagger+Knife4j接口文档</span>
+                                    <span class="post-nav-title-item">项目部署到云服务器后漏洞修复</span>
                                     <span class="post-nav-item">下一篇</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -651,8 +738,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">Redis实现共享Session</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8ESession%E5%AE%9E%E7%8E%B0%E7%99%BB%E5%BD%95%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">基于Session实现登录存在的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Boot-%E6%95%B4%E5%90%88-Redis-%E5%AE%9E%E7%8E%B0%E5%85%B1%E4%BA%ABSession"><span class="nav-text">Spring Boot 整合 Redis 实现共享Session</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E5%90%88-spring-boot-starter-data-redis"><span class="nav-text">整合 spring-boot-starter-data-redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E5%90%88-spring-session-data-redis"><span class="nav-text">整合 spring-session-data-redis</span></a></li></ol></li></ol>
+        <div class="page-title">Hexo配置Waline评论系统</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E9%80%89%E6%8B%A9"><span class="nav-text">评论系统选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-Keep%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AEWaline%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F"><span class="nav-text">Hexo-Keep主题配置Waline评论系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE-Waline-%E6%96%87%E6%A1%A3%E9%83%A8%E7%BD%B2-LeanCloud-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C-Vercel-%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="nav-text">根据 Waline 文档部署 LeanCloud 数据库和 Vercel 服务端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-config-yml"><span class="nav-text">修改主题配置文件 _config.yml</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-text">评论系统与管理系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AA%E6%9C%89%E5%9C%A8%E6%8C%82%E4%BA%86%E6%A2%AF%E5%AD%90%E4%B9%8B%E5%90%8E%E6%89%8D%E8%83%BD%E6%B5%81%E7%95%85%E8%AE%BF%E9%97%AE"><span class="nav-text">只有在挂了梯子之后才能流畅访问</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-text">解决办法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6"><span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5"><span class="nav-text">配置邮件通知</span></a></li></ol></li></ol>
 
     </div>
 </div>
